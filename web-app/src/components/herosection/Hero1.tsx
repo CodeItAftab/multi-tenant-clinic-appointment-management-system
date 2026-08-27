@@ -102,15 +102,7 @@ const Hero1 = () => {
                   key={index}
                   src={item.image}
                   alt={item.alt}
-                  className={`
-            absolute inset-0
-            w-full h-full
-            object-cover
-            rounded-3xl
-            shadow-2xl shadow-neutral-900/10
-            transition-opacity
-            duration-1000
-            ease-in-out
+                  className={`absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl shadow-neutral-900/10 transition-opacity duration-1000 ease-in-out
             ${current === index
                       ? "opacity-100"
                       : "opacity-0"
