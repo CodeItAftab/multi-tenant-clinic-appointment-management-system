@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+:root {
+    --font-heading: var(--font-roboto);
+    --font-body: var(--font-poppins);
+}
+
+
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+/* Body content */
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+select,
+label {
+    font-family: var(--font-body);
+}
+
 @theme {
   --font-roboto: var(--font-roboto);
   --font-poppins: var(--font-poppins);
