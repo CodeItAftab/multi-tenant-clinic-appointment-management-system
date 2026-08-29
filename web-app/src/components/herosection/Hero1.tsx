@@ -55,7 +55,7 @@ const Hero1 = () => {
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-9 w-full sm:w-auto">
 
             <Link
-              href="/"
+              href="/booking"
               className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-semibold px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl shadow-lg shadow-green-600/15 transition-colors duration-200 w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
             >
               <Calendar size={20} strokeWidth={2.5} />
@@ -63,7 +63,7 @@ const Hero1 = () => {
             </Link>
 
             <Link
-              href="/"
+              href="/doctors"
               className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-medium px-6 py-3.5 text-neutral-700 hover:text-neutral-900 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors duration-200 w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
             >
               Meet our doctors
