@@ -148,7 +148,7 @@ export default function HealthcareSections() {
             >
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-200">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center group-hover:bg-emerald-200 group-hover:text-white transition-colors duration-200">
                     {feature.icon}
                   </div>
                   <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
