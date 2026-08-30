@@ -57,7 +57,7 @@ function DoctorsDeatials() {
                                 <div className="mt-3 flex flex-col gap-1.5">
 
                                     <Link
-                                        href={"/"}
+                                        href={"/booking"}
 
                                         className="flex items-center justify-center gap-1 rounded-lg bg-emerald-600 py-1.5 text-[11.5px] font-bold text-white transition-colors hover:bg-emerald-700"
                                     >

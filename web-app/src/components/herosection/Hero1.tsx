@@ -49,16 +49,16 @@ const Hero1 = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-9 w-full sm:w-auto">
             <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-semibold px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl shadow-lg shadow-emerald-600/20 transition-all duration-200 w-full sm:w-auto hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+              href="/booking"
+              className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-semibold px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl shadow-lg shadow-green-600/15 transition-colors duration-200 w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
             >
               <Calendar size={20} strokeWidth={2.5} />
               Book Appointment
             </Link>
 
             <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-medium px-6 py-3.5 text-neutral-700 hover:text-neutral-900 rounded-xl border border-neutral-200 hover:border-neutral-300 bg-white transition-all duration-200 w-full sm:w-auto hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+              href="/doctors"
+              className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-medium px-6 py-3.5 text-neutral-700 hover:text-neutral-900 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors duration-200 w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
             >
               Meet our doctors
               <ArrowRight size={18} strokeWidth={2} />
@@ -88,8 +88,12 @@ const Hero1 = () => {
                   key={index}
                   src={item.image}
                   alt={item.alt}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-3xl transition-opacity duration-1000 ease-in-out ${current === index ? "opacity-100" : "opacity-0"
-                    }`}
+                  className={`absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl shadow-neutral-900/10 transition-opacity duration-1000 ease-in-out
+            ${current === index
+                      ? "opacity-100"
+                      : "opacity-0"
+                    }
+          `}
                 />
               ))}
 
