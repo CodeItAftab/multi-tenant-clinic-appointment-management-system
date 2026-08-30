@@ -64,8 +64,8 @@ function Navbar() {
 
                     <div className="flex items-center gap-2 sm:gap-3">
 
-
-                        <div className="relative">
+                        {/* Language selector: visible only on desktop/tablet (lg+) now */}
+                        <div className="relative hidden lg:block">
                             <select
                                 value={language}
                                 onChange={(e) => setLanguage(e.target.value)}
@@ -107,6 +107,23 @@ function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
+
+                            {/* Language selector moved here for mobile */}
+                            <div className="relative mt-2 px-4">
+                                <select
+                                    value={language}
+                                    onChange={(e) => setLanguage(e.target.value)}
+                                    className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-emerald-400 hover:shadow-md focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+                                >
+                                    <option value="English">English</option>
+                                    <option value="Hindi">हिंदी</option>
+                                </select>
+
+                                <ChevronDown
+                                    size={14}
+                                    className="pointer-events-none absolute right-7 top-1/2 -translate-y-1/2 text-gray-500"
+                                />
+                            </div>
                         </div>
                     </div>
                 )}
