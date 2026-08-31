@@ -20,7 +20,7 @@ const Hero1 = () => {
     <section className="w-full text-[#282828] min-h-screen bg-white px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 py-16 sm:py-20 md:py-24 flex items-center">
       <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
 
-     
+
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
 
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-100 px-4 py-1.5 shadow-sm">
@@ -78,7 +78,7 @@ const Hero1 = () => {
           </div>
         </div>
 
-       
+
         <div className="hidden lg:flex w-full lg:w-1/2 justify-center lg:justify-end">
           <div className="relative w-full max-w-sm md:max-w-lg xl:max-w-xl">
             <div className="relative w-full h-[420px] xl:h-[520px] overflow-hidden rounded-3xl shadow-2xl shadow-neutral-900/20 ring-1 ring-black/5">
@@ -88,12 +88,8 @@ const Hero1 = () => {
                   key={index}
                   src={item.image}
                   alt={item.alt}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl shadow-neutral-900/10 transition-opacity duration-1000 ease-in-out
-            ${current === index
-                      ? "opacity-100"
-                      : "opacity-0"
-                    }
-          `}
+                  className={`absolute inset-0 w-full h-full object-cover rounded-3xl transition-opacity duration-1000 ease-in-out ${current === index ? "opacity-100" : "opacity-0"
+                    }`}
                 />
               ))}
 
@@ -110,7 +106,7 @@ const Hero1 = () => {
                 </p>
               </div>
 
-          
+
               <div className="absolute top-5 right-5 flex gap-1.5">
                 {images.map((_, index) => (
                   <span
