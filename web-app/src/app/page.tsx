@@ -11,9 +11,6 @@ export default function Home() {
       <Hero1 />
       <Reschedule />
       <HealthcareSections/>
-      <div className="justify-center text-center items-center">
-        <button className="text-xl font-poppins font-bold px-5 py-3 text-white bg-emerald-500 hover:bg-emerald-700 rounded-xl "><Link href={"/doctors"}>View All Doctors →</Link></button>
-      </div>
       <Reviews/>
     </div>
   );
