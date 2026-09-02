@@ -15,8 +15,6 @@ export default function Home() {
         <button className="text-xl font-poppins font-bold px-5 py-3 text-white bg-emerald-500 hover:bg-emerald-700 rounded-xl "><Link href={"/doctors"}>View All Doctors →</Link></button>
       </div>
       <Reviews/>
-      <HealthcareSections />
-      <Reviews />
     </div>
   );
 }
