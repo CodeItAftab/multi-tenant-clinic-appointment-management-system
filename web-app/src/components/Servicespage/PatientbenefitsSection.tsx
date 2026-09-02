@@ -30,7 +30,7 @@ function PatientBenefitsSection() {
                     </ul>
                 </div>
 
-                <div className="rounded-3xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/50 p-7 shadow-sm sm:p-10">
+                <div className="rounded-3xl border border-emerald-100 bg-linear-to-br from-emerald-50 via-white to-emerald-100/50 p-7 shadow-sm sm:p-10">
                     <div className="mb-7">
                         <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-emerald-600">
                             Our Healthcare Promise

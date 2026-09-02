@@ -10,7 +10,7 @@ type HeroSectionProps = {
 
 function HeroSection({ searchTerm, setSearchTerm }: HeroSectionProps) {
     return (
-        <section className="border-b border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-slate-50">
+        <section className="border-b border-emerald-100 bg-linear-to-br from-emerald-50 via-white to-slate-50">
             <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-10">
 
                 <h1 className="mx-auto mt-5 max-w-4xl text-[30px] font-bold leading-tight tracking-tight text-slate-900 sm:text-[46px] lg:text-[54px]">

@@ -35,7 +35,7 @@ function ServiceCard({ service }: ServiceCardProps) {
                     {service.title}
                 </h3>
 
-                <p className="mt-1.5 line-clamp-2 min-h-[34px] text-[11px] leading-relaxed text-slate-600 sm:text-[13px]">
+                <p className="mt-1.5 line-clamp-2 min-h-8.5 text-[11px] leading-relaxed text-slate-600 sm:text-[13px]">
                     {service.desc}
                 </p>
 
@@ -43,7 +43,7 @@ function ServiceCard({ service }: ServiceCardProps) {
                     <span className="text-[11px] font-bold text-emerald-600">{service.price}</span>
 
                     <Link
-                        href="/appointment"
+                        href="/booking"
                         className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 transition-colors duration-300 group-hover:text-emerald-600"
                     >
                         Book

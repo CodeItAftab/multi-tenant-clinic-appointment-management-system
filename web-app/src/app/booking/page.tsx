@@ -1,5 +1,6 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import { doctors } from "@/utils/doctors";
 import { 
   User, 
@@ -56,6 +57,9 @@ export default function Booking() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Ref for the printable receipt block
+  const receiptRef = useRef<HTMLDivElement>(null);
 
   // Form State
   const [formData, setFormData] = useState<BookingFormState>({
@@ -129,6 +133,12 @@ export default function Booking() {
       setStep(3);
     }, 1200);
   };
+
+  // Print only the receipt block, styled like a billing slip
+  const handlePrintReceipt = useReactToPrint({
+    contentRef: receiptRef,
+    documentTitle: confirmedBooking ? `Receipt-${confirmedBooking.ticketNumber}` : "Receipt",
+  });
 
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8 font-sans antialiased text-slate-800">
@@ -601,10 +611,102 @@ export default function Booking() {
                 </div>
               </div>
 
+              {/* Hidden printable receipt (billing-slip style) */}
+              <div style={{ display: "none" }}>
+                <div ref={receiptRef} className="receipt-print">
+                  <style>{`
+                    .receipt-print {
+                      font-family: 'Courier New', monospace;
+                      width: 300px;
+                      margin: 0 auto;
+                      padding: 16px;
+                      color: #1e293b;
+                      font-size: 12px;
+                    }
+                    .receipt-print .center { text-align: center; }
+                    .receipt-print .header {
+                      border-bottom: 2px dashed #94a3b8;
+                      padding-bottom: 10px;
+                      margin-bottom: 10px;
+                    }
+                    .receipt-print .header h1 { font-size: 15px; letter-spacing: 1px; }
+                    .receipt-print .header p { font-size: 10px; color: #64748b; margin-top: 2px; }
+                    .receipt-print .badges {
+                      display: flex;
+                      justify-content: space-between;
+                      border-bottom: 2px dashed #94a3b8;
+                      padding-bottom: 10px;
+                      margin-bottom: 10px;
+                    }
+                    .receipt-print .badges div { text-align: center; flex: 1; }
+                    .receipt-print .badges .label { font-size: 9px; color: #64748b; }
+                    .receipt-print .badges .value { font-size: 16px; font-weight: bold; }
+                    .receipt-print .row {
+                      display: flex;
+                      justify-content: space-between;
+                      padding: 5px 0;
+                      border-bottom: 1px dotted #cbd5e1;
+                    }
+                    .receipt-print .label { color: #64748b; }
+                    .receipt-print .value { font-weight: bold; text-align: right; }
+                    .receipt-print .paid { color: #047857; }
+                    .receipt-print .footer {
+                      border-top: 2px dashed #94a3b8;
+                      margin-top: 12px;
+                      padding-top: 10px;
+                      font-size: 10px;
+                      color: #64748b;
+                    }
+                  `}</style>
+
+                  <div className="header center">
+                    <h1>SUNRISE FAMILY CLINIC</h1>
+                    <p>Booking Receipt • {confirmedBooking.bookingTime}</p>
+                  </div>
+
+                  <div className="badges">
+                    <div>
+                      <div className="label">TICKET NO.</div>
+                      <div className="value">{confirmedBooking.ticketNumber}</div>
+                    </div>
+                    <div>
+                      <div className="label">TOKEN NO.</div>
+                      <div className="value">#{confirmedBooking.tokenNumber}</div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <span className="label">Patient Name</span>
+                    <span className="value">{confirmedBooking.fullName}</span>
+                  </div>
+                  <div className="row">
+                    <span className="label">Doctor</span>
+                    <span className="value">{confirmedBooking.doctor}</span>
+                  </div>
+                  <div className="row">
+                    <span className="label">Date &amp; Session</span>
+                    <span className="value">{confirmedBooking.date} &bull; {confirmedBooking.sessionText}</span>
+                  </div>
+                  <div className="row">
+                    <span className="label">Payment Status</span>
+                    <span className="value paid">₹{confirmedBooking.amountPaid} (Paid Online)</span>
+                  </div>
+                  <div className="row">
+                    <span className="label">SMS Sent To</span>
+                    <span className="value">+91 {confirmedBooking.phoneNumber}</span>
+                  </div>
+
+                  <div className="footer center">
+                    Thank you for booking with us.<br />
+                    Please carry this receipt to your appointment.
+                  </div>
+                </div>
+              </div>
+
               {/* Action Buttons */}
               <div className="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={() => window.print()}
+                  onClick={() => handlePrintReceipt()}
                   className="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 rounded-xl shadow-sm transition"
                 >
                   <Download className="w-4 h-4" /> Download / Share Ticket

@@ -1,13 +1,14 @@
+"use client"
 import React, { useState } from "react";
-import { 
-  Calendar, 
-  FileText, 
-  Activity, 
-  Pill, 
-  ShieldCheck, 
-  Clock, 
-  Star, 
-  CheckCircle2, 
+import {
+  Calendar,
+  FileText,
+  Activity,
+  Pill,
+  ShieldCheck,
+  Clock,
+  Star,
+  CheckCircle2,
   ArrowRight,
   Stethoscope,
   PhoneCall,
@@ -117,13 +118,13 @@ const specialties = ["All", "Cardiology", "Neurology", "Pediatrics", "Orthopedic
 export default function HealthcareSections() {
   const [selectedSpecialty, setSelectedSpecialty] = useState("All");
 
-  const filteredDoctors = selectedSpecialty === "All" 
-    ? doctorsData 
+  const filteredDoctors = selectedSpecialty === "All"
+    ? doctorsData
     : doctorsData.filter(doc => doc.specialty === selectedSpecialty);
 
   return (
     <div className="bg-slate-50/50 py-10 space-y-20">
-      
+
       {/* ================= SECTION 1: HMS FEATURES ================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -142,7 +143,7 @@ export default function HealthcareSections() {
         {/* Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {hmsFeatures.map((feature) => (
-            <div 
+            <div
               key={feature.id}
               className="bg-white rounded-2xl p-7 border border-slate-100 shadow-sm hover:shadow-md hover:border-emerald-200 transition-all duration-200 flex flex-col justify-between group"
             >
@@ -170,7 +171,6 @@ export default function HealthcareSections() {
           ))}
         </div>
       </section>
-
       {/* ================= SECTION 2: MEET OUR DOCTORS ================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -193,11 +193,10 @@ export default function HealthcareSections() {
               <button
                 key={spec}
                 onClick={() => setSelectedSpecialty(spec)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                  selectedSpecialty === spec
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${selectedSpecialty === spec
                     ? "bg-emerald-600 text-white shadow-sm shadow-emerald-200"
                     : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                }`}
+                  }`}
               >
                 {spec}
               </button>
@@ -208,16 +207,16 @@ export default function HealthcareSections() {
         {/* Doctors Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredDoctors.map((doc) => (
-            <div 
-              key={doc.id} 
+            <div
+              key={doc.id}
               className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
             >
               {/* Doctor Image & Availability Badge */}
               <div className="relative h-60 bg-slate-100 overflow-hidden">
-                <img 
-                  src={doc.image} 
-                  alt={doc.name} 
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300" 
+                <img
+                  src={doc.image}
+                  alt={doc.name}
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-3 left-3">
                   {doc.availableToday ? (
@@ -252,7 +251,7 @@ export default function HealthcareSections() {
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 fill-emerald-100" />
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">{doc.degree}</p>
-                  
+
                   <div className="mt-3 flex items-center justify-between text-xs text-slate-600 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
                     <span>Experience: <strong>{doc.experience}</strong></span>
                   </div>
