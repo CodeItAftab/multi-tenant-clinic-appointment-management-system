@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar/Navbar";
+import GoogleTranslate from "../components/GoogleTranslate/GoogleTranslate";
+import Footer from "@/components/Footer/Footer";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -31,8 +33,10 @@ export default function RootLayout({
       className={`${roboto.variable} ${poppins.variable} h-full antialiased`}
     >
       <body>
+        <GoogleTranslate />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

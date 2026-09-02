@@ -1,5 +1,9 @@
 "use client"
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
+import Link from "next/link";
+>>>>>>> 756dc9192153fd7fc94b93dc547632c516375006
 import {
   Calendar,
   FileText,
@@ -194,8 +198,13 @@ export default function HealthcareSections() {
                 key={spec}
                 onClick={() => setSelectedSpecialty(spec)}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${selectedSpecialty === spec
+<<<<<<< HEAD
                     ? "bg-emerald-600 text-white shadow-sm shadow-emerald-200"
                     : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+=======
+                  ? "bg-emerald-600 text-white shadow-sm shadow-emerald-200"
+                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+>>>>>>> 756dc9192153fd7fc94b93dc547632c516375006
                   }`}
               >
                 {spec}
@@ -269,6 +278,12 @@ export default function HealthcareSections() {
           ))}
         </div>
       </section>
+
+      <div className="justify-center text-center items-center">
+        <button className="text-xl font-poppins font-bold px-5 py-3 text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl ">
+          <Link href={"/doctors"}>View All Doctors →</Link>
+        </button>
+      </div>
 
     </div>
   );

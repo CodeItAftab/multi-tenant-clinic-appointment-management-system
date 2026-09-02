@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Plus, ChevronDown, Menu, X } from "lucide-react";
+import { changeGoogleTranslateLanguage } from "@/utils/googleTranslate";
 
 function Navbar() {
     const [mobileMenu, setMobileMenu] = useState(false);
@@ -16,6 +17,12 @@ function Navbar() {
         { name: "Timings & Location", href: "/location" },
         { name: "Contact Us", href: "/contact" },
     ];
+
+    const handleLanguageChange = (value: string) => {
+        setLanguage(value);
+        const langCode = value === "Hindi" ? "hi" : "en";
+        changeGoogleTranslateLanguage(langCode);
+    };
 
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white shadow-sm">
@@ -68,7 +75,7 @@ function Navbar() {
                         <div className="relative hidden lg:block">
                             <select
                                 value={language}
-                                onChange={(e) => setLanguage(e.target.value)}
+                                onChange={(e) => handleLanguageChange(e.target.value)}
                                 className=" font-medium appearance-none cursor-pointer  rounded-xl border border-gray-200 bg-white/90 py-2 sm:py-2.5 lg:py-3 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[12px] sm:text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-emerald-400 hover:shadow-md focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
                             >
                                 <option value="English">English</option>
@@ -112,7 +119,7 @@ function Navbar() {
                             <div className="relative mt-2 px-4">
                                 <select
                                     value={language}
-                                    onChange={(e) => setLanguage(e.target.value)}
+                                    onChange={(e) => handleLanguageChange(e.target.value)}
                                     className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-emerald-400 hover:shadow-md focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
                                 >
                                     <option value="English">English</option>

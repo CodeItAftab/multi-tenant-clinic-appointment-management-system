@@ -6,8 +6,6 @@
 }
 
 
-
-/* Headings */
 h1,
 h2,
 h3,
@@ -17,7 +15,7 @@ h6 {
     font-family: var(--font-heading);
 }
 
-/* Body content */
+
 p,
 span,
 div,
@@ -31,6 +29,30 @@ label {
 }
 
 @theme {
-  --font-roboto: var(--font-roboto);
-  --font-poppins: var(--font-poppins);
+    --font-roboto: var(--font-roboto);
+    --font-poppins: var(--font-poppins);
+}
+
+
+
+
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
+
+.goog-te-gadget {
+    height: 0;
+    overflow: hidden;
+}
+
+#google_translate_element {
+    display: none !important;
+}
+
+.skiptranslate iframe {
+    display: none !important;
 }
