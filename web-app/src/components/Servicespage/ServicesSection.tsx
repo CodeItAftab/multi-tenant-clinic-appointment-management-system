@@ -2,7 +2,7 @@
 
 import { Search } from "lucide-react";
 import { services, categories } from "../../utils/servicesData";
-import ServiceCard from "./Servicecard";
+import ServiceCard from "./ServiceCard";
 
 type ServicesSectionProps = {
   searchTerm: string;
@@ -46,11 +46,10 @@ function ServicesSection({
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${
-                activeCategory === cat
-                  ? "border-[#4bb1c8] bg-[#4bb1c8] text-white shadow-sm"
-                  : "border-slate-200 bg-white text-slate-600 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
-              }`}
+              className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${activeCategory === cat
+                ? "border-[#4bb1c8] bg-[#4bb1c8] text-white shadow-sm"
+                : "border-slate-200 bg-white text-slate-600 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
+                }`}
             >
               {cat}
             </button>
@@ -91,7 +90,7 @@ function ServicesSection({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
             {filteredServices.map((service) => (
               <ServiceCard key={service.title} service={service} />
             ))}

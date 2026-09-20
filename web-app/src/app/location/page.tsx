@@ -1,4 +1,4 @@
-import HeroSection from "@/components/Timing&Location/HeroSection"; 
+import HeroSection from "@/components/Timing&Location/HeroSection";
 import TimingsSection from "@/components/Timing&Location/TimingsSection";
 import LocationSection from "@/components/Timing&Location/LocationSection";
 import QuickInfoSection from "@/components/Timing&Location/QuickinfoSection";

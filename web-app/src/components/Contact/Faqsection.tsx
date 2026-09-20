@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { contactFaqs } from "../../utils/contactdata";
 
-function FaqSection() {
+function Faqsection() {
     const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     return (
@@ -57,4 +57,4 @@ function FaqSection() {
     );
 }
 
-export default FaqSection;
+export default Faqsection;

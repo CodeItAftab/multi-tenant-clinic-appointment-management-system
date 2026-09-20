@@ -4,7 +4,7 @@ import React from "react";
 import { CheckCircle2 } from "lucide-react";
 import { includedItems } from "../../utils/servicesData";
 
-function PatientBenefitsSection() {
+function PatientbenefitsSection() {
     return (
         <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
             <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -88,4 +88,4 @@ function PatientBenefitsSection() {
     );
 }
 
-export default PatientBenefitsSection;
+export default PatientbenefitsSection;

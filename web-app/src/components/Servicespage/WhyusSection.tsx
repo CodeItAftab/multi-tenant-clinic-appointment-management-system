@@ -4,8 +4,8 @@ import { whyUs } from "../../utils/servicesData";
 
 function WhyUsSection() {
     return (
-        <section className="border-y border-slate-200 bg-slate-50">
-            <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
+        <section className="border-y border-slate-200 bg-slate-50 mt-15">
+            <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-10 lg:px-10">
                 <div className="mx-auto max-w-2xl text-center">
                     <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#4bb1c8]">
                         Why Choose Us

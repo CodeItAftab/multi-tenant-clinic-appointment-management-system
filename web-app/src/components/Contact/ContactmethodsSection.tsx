@@ -2,7 +2,7 @@
 
 import { contactMethods } from "../../utils/contactdata";
 
-function ContactMethodsSection() {
+function ContactmethodsSection() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-10">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -57,4 +57,4 @@ function ContactMethodsSection() {
   );
 }
 
-export default ContactMethodsSection;
+export default ContactmethodsSection;

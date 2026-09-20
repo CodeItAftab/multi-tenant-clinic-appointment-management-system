@@ -1,213 +1,276 @@
-"use client"
-import React from "react";
+"use client";
+
+import { useMemo, useState } from "react";
 import {
+  Stethoscope,
+  GraduationCap,
   Star,
-  Quote,
-  CheckCircle2,
-  HeartHandshake,
-  ArrowRight
+  Calendar,
+  Search,
+  ListFilter,
+  X,
 } from "lucide-react";
+import { doctors, Doctor } from "@/utils/doctorsData";
 import Link from "next/link";
+import DoctorDetailsModal from "./DoctorDetailsModal";
 
-// Review item interface
-interface Review {
-  id: number;
-  authorName: string;
-  roleOrSpecialty: string;
-  category: "patient" | "doctor" | "admin";
-  avatar: string;
-  rating: number;
-  title: string;
-  comment: string;
-  featureUsed: string;
-  date: string;
-  verified: boolean;
-  likes: number;
-}
+function DoctorsDeatials() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedSpecialty, setSelectedSpecialty] = useState("All");
+  const [activeDoctor, setActiveDoctor] = useState<Doctor | null>(null);
 
-const reviewsData: Review[] = [
-  {
-    id: 1,
-    authorName: "Marcus Sterling",
-    roleOrSpecialty: "Cardiology Patient",
-    category: "patient",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
-    rating: 5,
-    title: "Zero waiting line and seamless appointment booking!",
-    comment: "Booking Dr. Sarah was done in under a minute on my phone. When I arrived at the clinic, my token was already recognized on the digital board. I didn't have to fill out any paper forms — all my previous reports were already loaded in their EHR!",
-    featureUsed: "Smart Queue & OPD Booking",
-    date: "3 days ago",
-    verified: true,
-    likes: 24
-  },
-  {
-    id: 2,
-    authorName: "Dr. Arvind Patel",
-    roleOrSpecialty: "Head of Orthopedics",
-    category: "doctor",
-    avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200",
-    rating: 5,
-    title: "Cut down clinical documentation time by 40%",
-    comment: "As a practicing surgeon, pulling up previous MRI scans and writing e-prescriptions during rounds used to take hours. The HMS centralized portal provides instantaneous access to vitals and lab results directly from my tablet.",
-    featureUsed: "Doctor EHR Dashboard",
-    date: "1 week ago",
-    verified: true,
-    likes: 41
-  },
-  {
-    id: 3,
-    authorName: "Eleanor Vance",
-    roleOrSpecialty: "Pediatrics Parent",
-    category: "patient",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200",
-    rating: 5,
-    title: "Prescription reminders and lab test tracking are life-savers",
-    comment: "I used the online teleconsultation for my son's fever late at night. The doctor was attentive, the e-prescription went straight to the pharmacy, and medicines were delivered within 2 hours. Incredible care!",
-    featureUsed: "24/7 Teleconsultation & Pharmacy",
-    date: "2 weeks ago",
-    verified: true,
-    likes: 19
-  },
-  {
-    id: 4,
-    authorName: "Rachel Chen",
-    roleOrSpecialty: "Hospital Operations Director",
-    category: "admin",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200",
-    rating: 5,
-    title: "Streamlined 500+ daily patient flows effortlessly",
-    comment: "Managing inpatient bed occupancy, emergency triage dispatch, and cashless insurance claims used to create bottlenecks. With this HMS, our patient turnaround time and billing speed improved by over 60%.",
-    featureUsed: "Bed & Billing Management",
-    date: "3 weeks ago",
-    verified: true,
-    likes: 38
-  }
-];
+  const specialties = useMemo(() => {
+    const uniqueSpecialties = new Set(doctors.map((doctor) => doctor.specialty));
+    return ["All", ...Array.from(uniqueSpecialties)];
+  }, []);
 
-export default function Reviews() {
-  const displayedReviews = reviewsData.slice(0, 4);
+  const filteredDoctors = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+
+    return doctors.filter((doctor) => {
+      const matchesSearch =
+        doctor.name.toLowerCase().includes(query) ||
+        doctor.specialty.toLowerCase().includes(query) ||
+        doctor.qualification.toLowerCase().includes(query);
+
+      const matchesSpecialty =
+        selectedSpecialty === "All" ||
+        doctor.specialty === selectedSpecialty;
+
+      return matchesSearch && matchesSpecialty;
+    });
+  }, [searchTerm, selectedSpecialty]);
+
+  const hasActiveFilters =
+    searchTerm.trim() !== "" || selectedSpecialty !== "All";
+
+  const clearFilters = () => {
+    setSearchTerm("");
+    setSelectedSpecialty("All");
+  };
 
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-linear-to-b from-white via-[#e0f7fa]/30 to-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#b2ebf2] bg-linear-to-br from-[#e0f7fa] via-white to-white">
+        <div className="pointer-events-none absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[#b2ebf2]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 top-10 h-64 w-64 rounded-full bg-[#e0f7fa]/40 blur-3xl" />
 
-        {/* ================= HEADER ================= */}
-        <div className="mx-auto max-w-2xl text-center mb-12">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#b2ebf2] bg-[#e0f7fa] text-[#0f8fa8] text-xs font-semibold uppercase tracking-wider mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#4bb1c8]"></span>
-            Patient & Doctor Testimonials
+        <div className="relative mx-auto max-w-7xl px-4 pb-10 pt-16 sm:px-6 sm:pb-12 sm:pt-20 lg:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center rounded-full border border-[#b2ebf2] bg-white/80 px-4 py-1.5 text-[13px] font-extrabold uppercase tracking-[0.14em] text-[#4bb1c8] shadow-sm backdrop-blur-sm">
+              Meet Our Experts
+            </span>
+
+            <h1 className="mx-auto mt-6 max-w-3xl text-[30px] font-bold leading-tight tracking-tight text-slate-900 sm:text-[46px] lg:text-[54px]">
+              Trusted Specialists,{" "}
+              <span className="text-[#4bb1c8]">Dedicated to Your Care</span>.
+            </h1>
+
+            <p className="mt-3 text-[14px] leading-7 text-slate-600 sm:text-[16px]">
+              Meet the skilled professionals dedicated to delivering thoughtful,
+              trusted care at every stage of your health journey.
+            </p>
           </div>
-
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            What Our{" "}
-            <span className="text-[#4bb1c8]">Patients Say</span>
-          </h2>
-          <p className="mt-3 text-sm text-slate-600">
-            Real experiences from patients, doctors, and hospital staff.
-          </p>
         </div>
+      </section>
 
-        {/* ================= REVIEWS GRID (4 Cards) ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayedReviews.map((review) => (
-            <div
-              key={review.id}
-              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-[0_12px_40px_rgb(0,0,0,0.1)] hover:border-[#b2ebf2] transition-all duration-200 flex flex-col justify-between relative group"
+      {/* Filters */}
+      <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 sm:pt-10 lg:px-10">
+        <div className="flex flex-col items-center justify-center gap-3 lg:flex-row">
+          <div className="relative w-full max-w-65">
+            <ListFilter
+              size={17}
+              className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-slate-400"
+            />
+
+            <select
+              value={selectedSpecialty}
+              onChange={(event) => setSelectedSpecialty(event.target.value)}
+              className="w-full cursor-pointer appearance-none rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-10 text-[13px] font-semibold text-slate-700 shadow-sm outline-none transition-all hover:border-[#4bb1c8] focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa]"
             >
-              {/* Quote Watermark Icon */}
-              <Quote className="absolute top-4 right-4 w-7 h-7 text-slate-100 group-hover:text-[#b2ebf2] transition-colors pointer-events-none" />
+              {specialties.map((specialty) => (
+                <option key={specialty} value={specialty}>
+                  {specialty === "All" ? "All Specialties" : specialty}
+                </option>
+              ))}
+            </select>
 
-              <div>
-                {/* Rating Stars & Feature Tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1 text-[#f59e0b]">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#f59e0b] text-[#f59e0b]" />
-                    ))}
-                  </div>
-                </div>
+            <svg
+              className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
 
-                {/* Review Headline & Body */}
-                <h3 className="font-bold text-slate-900 text-sm mb-2 group-hover:text-[#4bb1c8] transition-colors line-clamp-2">
-                  "{review.title}"
-                </h3>
-                <p className="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-4">
-                  {review.comment}
-                </p>
-              </div>
+          <div className="relative w-full max-w-105">
+            <Search
+              size={18}
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+            />
 
-              {/* Author Footer */}
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-2.5">
-                <img
-                  src={review.avatar}
-                  alt={review.authorName}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-[#e0f7fa]"
-                />
-                <div>
-                  <div className="flex items-center gap-1 font-bold text-slate-900 text-xs">
-                    {review.authorName}
-                    {review.verified && (
-                      <CheckCircle2 className="w-3 h-3 text-[#4bb1c8] fill-[#e0f7fa]" />
-                    )}
-                  </div>
-                  <span className="text-[10px] text-slate-500 block">
-                    {review.roleOrSpecialty}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Search doctor or specialty..."
+              className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-10 text-[13px] text-slate-700 shadow-sm outline-none transition-all hover:border-[#4bb1c8] focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa] placeholder:text-slate-400"
+            />
 
-        {/* View All Reviews Button */}
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/reviews"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
-          >
-            View All Reviews
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-
-        {/* ================= BOTTOM CTA BANNER ================= */}
-        <div className="relative overflow-hidden rounded-3xl bg-[#0a1628] px-6 py-12 text-center sm:px-12 sm:py-20 mt-20">
-          {/* Subtle glow accent */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#4bb1c8]/10 blur-3xl" />
-          <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-[#1aa3bf]/10 blur-3xl" />
-
-          <div className="relative z-10 flex flex-col items-center justify-center gap-8 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-xl text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4bb1c8]/20 border border-[#4bb1c8]/30 text-[#4bb1c8] text-xs font-semibold uppercase tracking-wider mb-3">
-                <HeartHandshake className="w-4 h-4" />
-                Patient-First Healthcare
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                Ready to experience effortless hospital care?
-              </h3>
-              <p className="mt-2 text-slate-300 text-sm sm:text-base">
-                Book your appointment now or consult our top specialists online in just a few taps.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3.5 w-full md:w-auto">
-              <Link
-                href={"/booking"}
-                className="inline-flex items-center justify-center gap-2 bg-[#4bb1c8] hover:bg-[#33b6d3] text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-[#4bb1c8]/30 transition text-sm"
-              >
-                📅 Book Appointment
-              </Link>
+            {searchTerm && (
               <button
-                className="inline-flex items-center justify-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3.5 rounded-xl transition text-sm"
+                type="button"
+                onClick={() => setSearchTerm("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
               >
-                Leave a Review
+                <X size={16} />
               </button>
-            </div>
+            )}
           </div>
         </div>
 
-      </div>
-    </section>
-  )
+        <div className="mt-3 flex justify-center">
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#4bb1c8] transition-colors hover:text-[#1aa3bf]"
+            >
+              <X size={14} />
+              Clear filters
+            </button>
+          )}
+        </div>
+      </section>
+
+      {/* Doctors grid */}
+      <section className="mx-auto max-w-7xl px-4 pb-14 pt-8 sm:px-6 sm:pb-16 sm:pt-10 lg:px-10">
+        {filteredDoctors.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-18 text-center">
+            <div className="flex h-18 w-18 items-center justify-center rounded-full bg-[#e0f7fa] shadow-sm">
+              <Search size={24} className="text-[#4bb1c8]" />
+            </div>
+
+            <p className="mt-4 text-[15px] font-bold text-slate-700">
+              No doctors found
+            </p>
+
+            <p className="mt-1.5 text-[13px] text-slate-500">
+              Try another name or specialty, or reset your filters.
+            </p>
+
+            <button
+              type="button"
+              onClick={clearFilters}
+              className="mt-4 rounded-xl bg-[#4bb1c8] px-4 py-2 text-[12px] font-bold text-white shadow-sm transition-all hover:bg-[#33b6d3] hover:shadow-md"
+            >
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {filteredDoctors.map((doctor) => (
+              <div
+                key={doctor.id}
+                className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-[0_8px_25px_rgb(0,0,0,0.08)]"
+              >
+                <div className="p-4">
+                  <div className="flex items-start gap-3.5">
+                    <div className="shrink-0">
+                      <div className="h-16 w-16 overflow-hidden rounded-full ring-2 ring-[#e0f7fa] ring-offset-2 shadow-sm">
+                        <img
+                          src={doctor.image}
+                          alt={doctor.name}
+                          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="min-w-0 flex-1 pt-0.5">
+                      <h3 className="truncate text-[14px] font-extrabold text-[#282828]">
+                        {doctor.name}
+                      </h3>
+                      <p className="truncate text-[12px] font-bold text-[#4bb1c8]">
+                        {doctor.specialty}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex flex-col items-center text-center">
+                    <div className="flex items-center gap-1.5 rounded-lg bg-[#e0f7fa] px-2.5 py-1 shadow-sm">
+                      <Star
+                        size={12}
+                        className="fill-[#4bb1c8] text-[#4bb1c8]"
+                      />
+                      <span className="text-[12px] font-bold text-[#1aa3bf]">
+                        {doctor.rating}
+                      </span>
+                    </div>
+
+                    <div className="mt-3 w-full space-y-2">
+                      <div className="flex items-center justify-center gap-2 text-[12px] text-gray-600">
+                        <GraduationCap
+                          size={14}
+                          className="shrink-0 text-gray-400"
+                        />
+                        <span className="truncate font-semibold">
+                          {doctor.qualification}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-center gap-2 text-[12px] text-gray-600">
+                        <Stethoscope
+                          size={14}
+                          className="shrink-0 text-gray-400"
+                        />
+                        <span className="truncate font-semibold">
+                          {doctor.experience}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex w-full flex-col gap-2">
+                      <Link
+                        href="/booking"
+                        className="flex items-center justify-center gap-1.5 rounded-lg bg-[#4bb1c8] py-2 text-[12px] font-bold text-white shadow-sm transition-all hover:bg-[#33b6d3] hover:shadow-md"
+                      >
+                        <Calendar size={13} />
+                        Book Appointment
+                      </Link>
+
+                      <button
+                        type="button"
+                        onClick={() => setActiveDoctor(doctor)}
+                        className="flex justify-center rounded-lg border border-gray-200 py-2 text-[12px] font-bold text-[#282828] transition-all hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/40 hover:text-[#4bb1c8]"
+                      >
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {activeDoctor && (
+        <DoctorDetailsModal
+          doctor={activeDoctor}
+          onClose={() => setActiveDoctor(null)}
+        />
+      )}
+    </div>
+  );
 }
+
+export default DoctorsDeatials;
