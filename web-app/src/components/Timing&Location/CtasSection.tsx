@@ -2,17 +2,17 @@
 
 import React from "react";
 import { Phone, Navigation } from "lucide-react";
-import { locationInfo } from "./data";
+import { locationInfo } from "../../utils/timing&locationData";
 
 function CtasSection() {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-20 lg:px-10">
       <div className="relative overflow-hidden rounded-3xl bg-[#0a1628] px-6 py-12 text-center sm:px-12 sm:py-16">
-        <div className="pointer-events-none absolute right-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-emerald-500/20 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 -translate-x-1/3 rounded-full bg-emerald-500/10 blur-3xl" />
+        <div className="pointer-events-none absolute right-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#4bb1c8]/20 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 -translate-x-1/3 rounded-full bg-[#4bb1c8]/10 blur-3xl" />
 
         <div className="relative">
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-300">
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#4bb1c8]">
             On Your Way?
           </p>
 
@@ -28,9 +28,9 @@ function CtasSection() {
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href={locationInfo.mapDirectionsUrl}
-              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-7 py-3 text-[14px] font-bold text-white shadow-lg shadow-emerald-900/30 transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/20"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-full bg-[#4bb1c8] px-7 py-3 text-[14px] font-bold text-white shadow-lg shadow-[#4bb1c8]/30 transition-all duration-300 hover:bg-[#33b6d3] hover:shadow-[#4bb1c8]/20"
             >
               <Navigation size={16} />
               Get Directions

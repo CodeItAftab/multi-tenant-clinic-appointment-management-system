@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Clock, MapPin } from "lucide-react";
-import { locationInfo } from "./data";
-
+import { locationInfo } from "../../utils/timing&locationData";
 
 const OPD_WINDOWS = [
     { start: 9 * 60, end: 13 * 60 },
@@ -30,11 +29,11 @@ function HeroSection() {
     }, []);
 
     return (
-        <section className="border-b border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-slate-50">
-            <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-10">
-               
+        <section className="border-b border-[#b2ebf2] bg-gradient-to-br from-[#e0f7fa] via-white to-slate-50">
+            <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-12 lg:px-10">
                 <h1 className="mx-auto mt-5 max-w-4xl text-[30px] font-bold leading-tight tracking-tight text-slate-900 sm:text-[46px] lg:text-[54px]">
-                    Know before you <span className="text-emerald-600">walk in</span>
+                    Know before you{" "}
+                    <span className="text-[#4bb1c8]">walk in</span>
                 </h1>
 
                 <p className="mx-auto mt-5 max-w-2xl text-[14px] leading-relaxed text-slate-600 sm:text-[16px]">
@@ -45,15 +44,23 @@ function HeroSection() {
                 <div className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 shadow-sm">
                     <span className="relative flex h-2.5 w-2.5">
                         {isOpen && (
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4bb1c8] opacity-75" />
                         )}
                         <span
-                            className={`relative inline-flex h-2.5 w-2.5 rounded-full ${isOpen === null ? "bg-slate-300" : isOpen ? "bg-emerald-500" : "bg-slate-400"
+                            className={`relative inline-flex h-2.5 w-2.5 rounded-full ${isOpen === null
+                                    ? "bg-slate-300"
+                                    : isOpen
+                                        ? "bg-[#4bb1c8]"
+                                        : "bg-slate-400"
                                 }`}
                         />
                     </span>
                     <span className="text-[13px] font-bold text-slate-800">
-                        {isOpen === null ? "Checking OPD status…" : isOpen ? "OPD Open Now" : "OPD Closed Now"}
+                        {isOpen === null
+                            ? "Checking OPD status…"
+                            : isOpen
+                                ? "OPD Open Now"
+                                : "OPD Closed Now"}
                     </span>
                     <span className="text-[12px] text-slate-400">·</span>
                     <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-slate-500">
@@ -65,16 +72,16 @@ function HeroSection() {
                 <div className="mx-auto mt-6 flex max-w-xl flex-col items-center justify-center gap-3 sm:flex-row">
                     <a
                         href={locationInfo.mapDirectionsUrl}
-                        target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-[13px] font-bold text-white shadow-sm transition-all duration-300 hover:bg-emerald-500"
+                        target="_blank"
+                        className="inline-flex items-center gap-2 rounded-full bg-[#4bb1c8] px-6 py-3 text-[13px] font-bold text-white shadow-sm transition-all duration-300 hover:bg-[#33b6d3]"
                     >
                         <MapPin size={15} />
                         Get Directions
                     </a>
                     <a
                         href={locationInfo.phoneHref}
-                        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-[13px] font-bold text-slate-700 transition-all duration-300 hover:border-emerald-300 hover:text-emerald-600"
+                        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-[13px] font-bold text-slate-700 transition-all duration-300 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
                     >
                         Call Reception
                     </a>

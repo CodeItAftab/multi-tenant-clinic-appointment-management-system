@@ -1,99 +1,82 @@
-import React from 'react'
-import { HeartHandshake, Lock,   } from "lucide-react";
+import { HeartHandshake, Lock } from "lucide-react";
+
 function Info() {
-    return (
-        <div className='w-full bg-white'>
-            <section className="border-t border-gray-200 bg-gray-50">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-14 sm:py-20">
-                    <div className="grid gap-6 sm:grid-cols-2">
-                      
-                        <div className="rounded-2xl bg-white border border-gray-200 p-8 sm:p-10 shadow-sm">
-                            <span className="text-[11px] sm:text-[12px] font-bold tracking-wide text-rose-500">
-                                THE PROBLEM (WHY WE EXIST)
-                            </span>
-                            <h3 className="mt-3 text-[20px] sm:text-[24px] font-bold text-[#282828]">
-                                Opacity and endless waiting.
-                            </h3>
-                            <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
-                                Historically, finding a specialist meant calling multiple
-                                clinics, relying on word-of-mouth, and turning up without
-                                knowing the consultation fee. Once there, patients often
-                                faced crowded waiting rooms and indefinite delays. We
-                                realized this broken, opaque system hurt both patients
-                                and well-meaning doctors.
-                            </p>
-                        </div>
+  return (
+    <section className="border-t border-gray-200 bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {/* Problem */}
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
+            <span className="text-[10px] font-bold tracking-wide text-rose-500 sm:text-[11px]">
+              THE PROBLEM
+            </span>
 
-                       
-                        <div className="rounded-2xl bg-white border border-gray-200 p-8 sm:p-10 shadow-sm">
-                            <span className="text-[11px] sm:text-[12px] font-bold tracking-wide text-emerald-600">
-                                THE SOLUTION (WHAT WE DO)
-                            </span>
-                            <h3 className="mt-3 text-[20px] sm:text-[24px] font-bold text-[#282828]">
-                                Clarity, respect, and convenience.
-                            </h3>
-                            <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
-                                HMS brings the entire booking process online with
-                                absolute transparency. You see the doctor's verified
-                                credentials, the exact consultation fee, and real-time
-                                slot availability. You book, you walk in, you get
-                                treated. It's healthcare scheduling designed with
-                                respect for your time and wallet.
-                            </p>
-                        </div>
+            <h3 className="mt-2 text-[18px] font-bold text-[#282828] sm:text-[20px]">
+              Opacity and long waits.
+            </h3>
 
-                        
-                        <div className="rounded-2xl bg-white border border-gray-200 p-8 sm:p-10 shadow-sm">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100">
-                                <HeartHandshake size={20} className="text-emerald-600" />
-                            </div>
-                            <h3 className="mt-5 text-[20px] sm:text-[24px] font-bold text-[#282828]">
-                                Our Business Model: Complete Honesty
-                            </h3>
-                            <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
-                                <span className="font-semibold text-[#282828]">
-                                    HMS is completely free for patients.
-                                </span>{" "}
-                                We do not charge hidden convenience fees, nor do we
-                                inflate clinic fees. We charge partner clinics a
-                                predictable software (SaaS) fee to use our booking
-                                system.
-                            </p>
+            <p className="mt-3 text-[12px] leading-relaxed text-gray-600 sm:text-[13px]">
+              Finding a specialist often means multiple calls, unclear fees,
+              crowded waiting rooms, and long delays. This lack of clarity
+              affects both patients and doctors.
+            </p>
+          </div>
 
-                            <div className="mt-6 rounded-xl bg-gray-50 p-5">
-                                <p className="text-[14px] sm:text-[15px] font-semibold text-[#282828]">
-                                    We do NOT sell rankings.
-                                </p>
-                                <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-gray-600">
-                                    Clinics cannot pay to appear higher in searches.
-                                    Rankings are 100% organic, driven by patient
-                                    preference and reviews.
-                                </p>
-                            </div>
-                        </div>
+          {/* Solution */}
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
+            <span className="text-[10px] font-bold tracking-wide text-[#4bb1c8] sm:text-[11px]">
+              THE SOLUTION
+            </span>
 
-                        
-                        <div className="rounded-2xl bg-white border border-gray-200 p-8 sm:p-10 shadow-sm">
-                            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100">
-                                <Lock size={20} className="text-emerald-600" />
-                            </div>
-                            <h3 className="mt-5 text-[20px] sm:text-[24px] font-bold text-[#282828]">
-                                Your Privacy &amp; Data Security
-                            </h3>
-                            <p className="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-gray-600">
-                                Healthcare data is deeply personal. We implement
-                                strict, industry-standard encryption and security
-                                protocols to ensure your booking history, personal
-                                information, and medical preferences are never
-                                compromised, sold, or shared without your explicit
-                                consent. Your health data belongs exclusively to you.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <h3 className="mt-2 text-[18px] font-bold text-[#282828] sm:text-[20px]">
+              Clarity and convenience.
+            </h3>
+
+            <p className="mt-3 text-[12px] leading-relaxed text-gray-600 sm:text-[13px]">
+              HMS shows verified doctor details, transparent consultation fees,
+              and available slots—so you can book with confidence.
+            </p>
+          </div>
+
+          {/* Business model */}
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#e0f7fa] ring-1 ring-[#b2ebf2]">
+              <HeartHandshake size={17} className="text-[#4bb1c8]" />
+            </div>
+
+            <h3 className="mt-3 text-[18px] font-bold text-[#282828] sm:text-[20px]">
+              Complete honesty
+            </h3>
+
+            <p className="mt-3 text-[12px] leading-relaxed text-gray-600 sm:text-[13px]">
+              <span className="font-semibold text-[#282828]">
+                HMS is free for patients.
+              </span>{" "}
+              We do not add hidden convenience fees or inflate clinic charges.
+              Partner clinics pay a predictable software fee.
+            </p>
+          </div>
+
+          {/* Privacy */}
+          <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#e0f7fa] ring-1 ring-[#b2ebf2]">
+              <Lock size={17} className="text-[#4bb1c8]" />
+            </div>
+
+            <h3 className="mt-3 text-[18px] font-bold text-[#282828] sm:text-[20px]">
+              Privacy and security
+            </h3>
+
+            <p className="mt-3 text-[12px] leading-relaxed text-gray-600 sm:text-[13px]">
+              Your health information is personal. We protect your booking
+              details and preferences with strong security practices and never
+              sell or share data without your consent.
+            </p>
+          </div>
         </div>
-    )
+      </div>
+    </section>
+  );
 }
 
-export default Info
+export default Info;

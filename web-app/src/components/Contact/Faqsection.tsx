@@ -2,16 +2,16 @@
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { contactFaqs } from "./contactdata";
+import { contactFaqs } from "../../utils/contactdata";
 
 function FaqSection() {
     const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     return (
-        <section className="border-t border-slate-200 bg-slate-50">
+        <section className="border-t border-slate-200 bg-white">
             <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
                 <div className="text-center">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-600">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#4bb1c8]">
                         FAQs
                     </p>
                     <h2 className="mt-2 text-[24px] font-bold text-slate-900 sm:text-[30px]">
@@ -34,7 +34,7 @@ function FaqSection() {
                                 </span>
                                 <ChevronDown
                                     size={18}
-                                    className={`shrink-0 text-emerald-600 transition-transform duration-300 ${openFaq === index ? "rotate-180" : ""
+                                    className={`shrink-0 text-[#4bb1c8] transition-transform duration-300 ${openFaq === index ? "rotate-180" : ""
                                         }`}
                                 />
                             </button>

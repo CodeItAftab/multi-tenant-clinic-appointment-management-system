@@ -1,25 +1,21 @@
 "use client"
 import React, { useState } from "react";
-import { doctors } from "@/utils/doctors";
-import { 
-  User, 
-  Phone, 
-  Calendar as CalendarIcon, 
-  Clock, 
-  CreditCard, 
-  CheckCircle2, 
-  ArrowRight, 
-  ArrowLeft, 
-  Download, 
-  Share2, 
-  ShieldCheck, 
-  Smartphone, 
-  Sun, 
+import { doctors } from "@/utils/doctorsData";
+import {
+  User,
+  Phone,
+  Calendar as CalendarIcon,
+  Clock,
+  CreditCard,
+  CheckCircle2,
+  ArrowRight,
+  ArrowLeft,
+  Download,
+  Share2,
+  ShieldCheck,
+  Smartphone,
+  Sun,
   Sunset,
-  Sparkles,
-  Stethoscope,
-  Receipt,
-  MessageSquare,
   AlertCircle
 } from "lucide-react";
 
@@ -133,11 +129,11 @@ export default function Booking() {
   return (
     <div className="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8 font-sans antialiased text-slate-800">
       <div className="max-w-3xl mx-auto">
-        
+
         {/* ================= TOP BRANDING ================= */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e0f7fa] border border-[#b2ebf2] text-[#0f8fa8] text-xs font-bold uppercase tracking-wider mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#4bb1c8] animate-pulse"></span>
             Online OPD Slot Booking
           </div>
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -157,13 +153,12 @@ export default function Booking() {
               <React.Fragment key={s.num}>
                 <div className="flex flex-col items-center">
                   <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all ${
-                      step === s.num
-                        ? "bg-emerald-600 text-white ring-4 ring-emerald-100"
+                    className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all ${step === s.num
+                        ? "bg-[#4bb1c8] text-white ring-4 ring-[#e0f7fa]"
                         : step > s.num
-                        ? "bg-emerald-100 text-emerald-700"
-                        : "bg-slate-200 text-slate-500"
-                    }`}
+                          ? "bg-[#e0f7fa] text-[#0f8fa8]"
+                          : "bg-slate-200 text-slate-500"
+                      }`}
                   >
                     {step > s.num ? "✓" : s.num}
                   </div>
@@ -173,9 +168,8 @@ export default function Booking() {
                 </div>
                 {idx < 2 && (
                   <div
-                    className={`flex-1 h-1 mx-3 rounded ${
-                      step > s.num ? "bg-emerald-500" : "bg-slate-200"
-                    }`}
+                    className={`flex-1 h-1 mx-3 rounded ${step > s.num ? "bg-[#4bb1c8]" : "bg-slate-200"
+                      }`}
                   />
                 )}
               </React.Fragment>
@@ -201,7 +195,7 @@ export default function Booking() {
 
             {/* Inputs Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              
+
               {/* Full Name */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
@@ -212,7 +206,7 @@ export default function Booking() {
                     value={formData.fullName}
                     onChange={(e) => handleInputChange("fullName", e.target.value)}
                     placeholder="Enter patient full name"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                   />
                 </div>
               </div>
@@ -228,7 +222,7 @@ export default function Booking() {
                     value={formData.phoneNumber}
                     onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
                     placeholder="e.g. 9876543210"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                   />
                 </div>
               </div>
@@ -241,7 +235,7 @@ export default function Booking() {
                   value={formData.age}
                   onChange={(e) => handleInputChange("age", e.target.value)}
                   placeholder="e.g. 28"
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                 />
               </div>
 
@@ -251,7 +245,7 @@ export default function Booking() {
                 <select
                   value={formData.doctor}
                   onChange={(e) => handleInputChange("doctor", e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                 >
                   {doctors.map((doc) => (
                     <option key={doc.id} value={doc.name}>
@@ -270,7 +264,7 @@ export default function Booking() {
                     type="date"
                     value={formData.preferredDate}
                     onChange={(e) => handleInputChange("preferredDate", e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                   />
                 </div>
               </div>
@@ -283,7 +277,7 @@ export default function Booking() {
                   value={formData.reason}
                   onChange={(e) => handleInputChange("reason", e.target.value)}
                   placeholder="e.g. Fever, headache, body pain"
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                 />
               </div>
 
@@ -300,21 +294,20 @@ export default function Booking() {
                     Tokens are called in order during the session window (no fixed minute slot)
                   </p>
                 </div>
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
+                <span className="text-xs font-bold text-[#0f8fa8] bg-[#e0f7fa] px-2.5 py-1 rounded-md">
                   {formData.preferredDate}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
+
                 {/* Morning Session Card */}
                 <div
                   onClick={() => handleInputChange("session", "morning")}
-                  className={`p-4 sm:p-5 rounded-2xl border-2 cursor-pointer transition flex items-start justify-between ${
-                    formData.session === "morning"
-                      ? "border-emerald-600 bg-emerald-50/50 shadow-sm"
-                      : "border-slate-200 hover:border-slate-300 bg-white"
-                  }`}
+                  className={`p-4 sm:p-5 rounded-2xl border-2 cursor-pointer transition flex items-start justify-between ${formData.session === "morning"
+                      ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
+                      : "border-slate-200 hover:border-[#b2ebf2] bg-white"
+                    }`}
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mt-0.5">
@@ -323,7 +316,7 @@ export default function Booking() {
                     <div>
                       <h3 className="font-bold text-slate-900 text-sm">Morning Session</h3>
                       <p className="text-xs font-bold text-slate-700 mt-0.5">9:00 AM – 2:00 PM</p>
-                      <span className="inline-block mt-2 text-[10px] font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
+                      <span className="inline-block mt-2 text-[10px] font-semibold text-[#0f8fa8] bg-[#e0f7fa] px-2 py-0.5 rounded-full">
                         ● Tokens #1 to #25
                       </span>
                     </div>
@@ -332,19 +325,18 @@ export default function Booking() {
                     type="radio"
                     name="session"
                     checked={formData.session === "morning"}
-                    onChange={() => {}}
-                    className="w-4 h-4 text-emerald-600 accent-emerald-600 mt-1"
+                    onChange={() => { }}
+                    className="w-4 h-4 text-[#4bb1c8] accent-[#4bb1c8] mt-1"
                   />
                 </div>
 
                 {/* Evening Session Card */}
                 <div
                   onClick={() => handleInputChange("session", "evening")}
-                  className={`p-4 sm:p-5 rounded-2xl border-2 cursor-pointer transition flex items-start justify-between ${
-                    formData.session === "evening"
-                      ? "border-emerald-600 bg-emerald-50/50 shadow-sm"
-                      : "border-slate-200 hover:border-slate-300 bg-white"
-                  }`}
+                  className={`p-4 sm:p-5 rounded-2xl border-2 cursor-pointer transition flex items-start justify-between ${formData.session === "evening"
+                      ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
+                      : "border-slate-200 hover:border-[#b2ebf2] bg-white"
+                    }`}
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mt-0.5">
@@ -362,8 +354,8 @@ export default function Booking() {
                     type="radio"
                     name="session"
                     checked={formData.session === "evening"}
-                    onChange={() => {}}
-                    className="w-4 h-4 text-emerald-600 accent-emerald-600 mt-1"
+                    onChange={() => { }}
+                    className="w-4 h-4 text-[#4bb1c8] accent-[#4bb1c8] mt-1"
                   />
                 </div>
 
@@ -374,7 +366,7 @@ export default function Booking() {
             <div className="pt-4 flex justify-end">
               <button
                 onClick={handleProceedToPayment}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3 rounded-xl shadow-md shadow-emerald-200 transition"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#4bb1c8] hover:bg-[#33b6d3] text-white font-bold px-8 py-3 rounded-xl shadow-md shadow-[#e0f7fa] transition"
               >
                 Proceed to Online Payment (₹{selectedDoctorObj.rating}) <ArrowRight className="w-4 h-4" />
               </button>
@@ -391,7 +383,7 @@ export default function Booking() {
                 <h2 className="text-xl font-bold text-slate-900">Make Upfront Payment</h2>
                 <p className="text-xs text-slate-500">Fast & secure token reservation</p>
               </div>
-              <span className="text-xs font-semibold px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-md">
+              <span className="text-xs font-semibold px-2.5 py-1 bg-[#e0f7fa] text-[#0f8fa8] rounded-md">
                 Step 2 of 3
               </span>
             </div>
@@ -414,7 +406,7 @@ export default function Booking() {
               </div>
               <div className="pt-2 border-t border-slate-200 flex justify-between items-center text-sm">
                 <span className="font-extrabold text-slate-900">Total Upfront Amount</span>
-                <span className="text-xl font-black text-emerald-700">₹{selectedDoctorObj.rating}</span>
+                <span className="text-xl font-black text-[#0f8fa8]">₹{selectedDoctorObj.rating}</span>
               </div>
             </div>
 
@@ -422,53 +414,50 @@ export default function Booking() {
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-2">Select Payment Method</label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-                
+
                 {/* UPI */}
                 <div
                   onClick={() => handleInputChange("paymentMethod", "upi")}
-                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition flex items-center justify-between ${
-                    formData.paymentMethod === "upi"
-                      ? "border-emerald-600 bg-emerald-50/40 text-emerald-900 font-bold"
-                      : "border-slate-200 text-slate-700"
-                  }`}
+                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition flex items-center justify-between ${formData.paymentMethod === "upi"
+                      ? "border-[#4bb1c8] bg-[#e0f7fa]/40 text-[#0f8fa8] font-bold"
+                      : "border-slate-200 text-slate-700 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
+                    }`}
                 >
                   <div className="flex items-center gap-2 text-xs">
-                    <Smartphone className="w-4 h-4 text-emerald-600" />
+                    <Smartphone className="w-4 h-4 text-[#4bb1c8]" />
                     <span>UPI (GPay / PhonePe)</span>
                   </div>
-                  <input type="radio" checked={formData.paymentMethod === "upi"} onChange={() => {}} className="accent-emerald-600" />
+                  <input type="radio" checked={formData.paymentMethod === "upi"} onChange={() => { }} className="accent-[#4bb1c8]" />
                 </div>
 
                 {/* Card */}
                 <div
                   onClick={() => handleInputChange("paymentMethod", "card")}
-                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition flex items-center justify-between ${
-                    formData.paymentMethod === "card"
-                      ? "border-emerald-600 bg-emerald-50/40 text-emerald-900 font-bold"
-                      : "border-slate-200 text-slate-700"
-                  }`}
+                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition flex items-center justify-between ${formData.paymentMethod === "card"
+                      ? "border-[#4bb1c8] bg-[#e0f7fa]/40 text-[#0f8fa8] font-bold"
+                      : "border-slate-200 text-slate-700 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
+                    }`}
                 >
                   <div className="flex items-center gap-2 text-xs">
-                    <CreditCard className="w-4 h-4 text-emerald-600" />
+                    <CreditCard className="w-4 h-4 text-[#4bb1c8]" />
                     <span>Debit / Credit Card</span>
                   </div>
-                  <input type="radio" checked={formData.paymentMethod === "card"} onChange={() => {}} className="accent-emerald-600" />
+                  <input type="radio" checked={formData.paymentMethod === "card"} onChange={() => { }} className="accent-[#4bb1c8]" />
                 </div>
 
                 {/* NetBanking */}
                 <div
                   onClick={() => handleInputChange("paymentMethod", "netbanking")}
-                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition flex items-center justify-between ${
-                    formData.paymentMethod === "netbanking"
-                      ? "border-emerald-600 bg-emerald-50/40 text-emerald-900 font-bold"
-                      : "border-slate-200 text-slate-700"
-                  }`}
+                  className={`p-3.5 rounded-xl border-2 cursor-pointer transition flex items-center justify-between ${formData.paymentMethod === "netbanking"
+                      ? "border-[#4bb1c8] bg-[#e0f7fa]/40 text-[#0f8fa8] font-bold"
+                      : "border-slate-200 text-slate-700 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
+                    }`}
                 >
                   <div className="flex items-center gap-2 text-xs">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <ShieldCheck className="w-4 h-4 text-[#4bb1c8]" />
                     <span>Net Banking</span>
                   </div>
-                  <input type="radio" checked={formData.paymentMethod === "netbanking"} onChange={() => {}} className="accent-emerald-600" />
+                  <input type="radio" checked={formData.paymentMethod === "netbanking"} onChange={() => { }} className="accent-[#4bb1c8]" />
                 </div>
 
               </div>
@@ -482,7 +471,7 @@ export default function Booking() {
                     value={formData.upiId}
                     onChange={(e) => handleInputChange("upiId", e.target.value)}
                     placeholder="e.g. mobileNumber@upi"
-                    className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white"
+                    className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                   />
                   <p className="text-[11px] text-slate-400">Accepts Google Pay, PhonePe, Paytm, BHIM</p>
                 </div>
@@ -495,17 +484,17 @@ export default function Booking() {
                     <input
                       type="text"
                       placeholder="4532 •••• •••• ••••"
-                      className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white"
+                      className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="font-bold text-slate-700 block mb-1">Expiry Date</label>
-                      <input type="text" placeholder="MM/YY" className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white" />
+                      <input type="text" placeholder="MM/YY" className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]" />
                     </div>
                     <div>
                       <label className="font-bold text-slate-700 block mb-1">CVV</label>
-                      <input type="password" maxLength={3} placeholder="•••" className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white" />
+                      <input type="password" maxLength={3} placeholder="•••" className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]" />
                     </div>
                   </div>
                 </div>
@@ -526,7 +515,7 @@ export default function Booking() {
                 type="button"
                 disabled={isProcessingPayment}
                 onClick={handlePayAndConfirm}
-                className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-7 py-3 rounded-xl shadow-lg shadow-emerald-200 transition disabled:opacity-50"
+                className="inline-flex items-center gap-2 bg-[#4bb1c8] hover:bg-[#33b6d3] text-white text-xs font-bold px-7 py-3 rounded-xl shadow-lg shadow-[#e0f7fa] transition disabled:opacity-50"
               >
                 {isProcessingPayment ? (
                   <>
@@ -544,12 +533,12 @@ export default function Booking() {
         {/* ================= STEP 3: TICKET NUMBER + TOKEN NUMBER & SMS NOTIFICATION ================= */}
         {step === 3 && confirmedBooking && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            
+
             {/* Left 2 Cols: Confirmed Ticket */}
             <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col justify-between">
               <div>
                 <div className="text-center pb-5 border-b border-slate-100">
-                  <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-14 h-14 bg-[#e0f7fa] text-[#4bb1c8] rounded-full flex items-center justify-center mx-auto mb-2">
                     <CheckCircle2 className="w-9 h-9" />
                   </div>
                   <h2 className="text-2xl font-black text-slate-900">Appointment Confirmed!</h2>
@@ -567,8 +556,8 @@ export default function Booking() {
                     </div>
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold text-emerald-700 uppercase">Your Token Number</span>
-                    <div className="text-3xl font-black text-emerald-600">
+                    <span className="text-[11px] font-bold text-[#0f8fa8] uppercase">Your Token Number</span>
+                    <div className="text-3xl font-black text-[#4bb1c8]">
                       #{confirmedBooking.tokenNumber}
                     </div>
                   </div>
@@ -592,7 +581,7 @@ export default function Booking() {
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-slate-100">
                     <span className="text-slate-400 font-medium">Payment Status</span>
-                    <span className="font-bold text-emerald-700">₹{confirmedBooking.amountPaid} (Paid Online)</span>
+                    <span className="font-bold text-[#0f8fa8]">₹{confirmedBooking.amountPaid} (Paid Online)</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-slate-100">
                     <span className="text-slate-400 font-medium">SMS Sent To</span>
@@ -605,7 +594,7 @@ export default function Booking() {
               <div className="mt-8 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => window.print()}
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-3 rounded-xl shadow-sm transition"
+                  className="flex-1 inline-flex items-center justify-center gap-2 bg-[#4bb1c8] hover:bg-[#33b6d3] text-white text-xs font-bold py-3 rounded-xl shadow-sm transition"
                 >
                   <Download className="w-4 h-4" /> Download / Share Ticket
                 </button>
@@ -628,16 +617,16 @@ export default function Booking() {
 
               <div className="flex-1 flex flex-col justify-center">
                 <div className="text-center mb-3">
-                  <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center mx-auto text-xs font-bold mb-1">
+                  <div className="w-8 h-8 rounded-full bg-[#4bb1c8] text-white flex items-center justify-center mx-auto text-xs font-bold mb-1">
                     SC
                   </div>
                   <span className="text-[11px] font-bold text-slate-200 block">Sunrise Clinic</span>
-                  <span className="text-[9px] text-emerald-400 font-medium">SMS Delivered Just Now</span>
+                  <span className="text-[9px] text-[#4bb1c8] font-medium">SMS Delivered Just Now</span>
                 </div>
 
                 {/* SMS Message Bubble */}
                 <div className="bg-slate-800 text-slate-100 rounded-2xl rounded-tl-none p-3.5 border border-slate-700 text-xs leading-relaxed shadow-md">
-                  <p className="font-semibold text-emerald-400 mb-1">
+                  <p className="font-semibold text-[#4bb1c8] mb-1">
                     Sunrise Clinic: Your appointment is confirmed!
                   </p>
                   <div className="text-[11px] text-slate-300 space-y-0.5">
@@ -647,7 +636,7 @@ export default function Booking() {
                     <p><strong>Date:</strong> {confirmedBooking.date}</p>
                     <p><strong>Session:</strong> {formData.session === "morning" ? "9 AM–2 PM" : "3 PM–5 PM"}</p>
                   </div>
-                  <p className="mt-2 text-[10px] text-emerald-300 font-medium">Thank you!</p>
+                  <p className="mt-2 text-[10px] text-[#4bb1c8] font-medium">Thank you!</p>
                 </div>
               </div>
 

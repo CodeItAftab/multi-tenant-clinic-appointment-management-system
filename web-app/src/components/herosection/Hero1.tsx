@@ -1,128 +1,96 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from "react"
-import { Calendar, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { images } from "./Herodata"
+import Link from "next/link";
+import { Calendar, ArrowRight } from "lucide-react";
 
 const Hero1 = () => {
-  const [current, setCurrent] = useState<number>(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev < images.length - 1 ? prev + 1 : 0))
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
-
   return (
-    <section className="w-full text-[#282828] min-h-screen bg-white px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 py-16 sm:py-20 md:py-24 flex items-center">
-      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+    <section className="mx-auto w-full max-w-7xl bg-white px-4 pb-5 pt-6 sm:px-6 sm:pb-6 sm:pt-8 lg:px-10 lg:pb-8 lg:pt-14">
+      <div
+        className="relative mx-auto min-h-[460px] overflow-hidden rounded-2xl border border-slate-200 bg-cover bg-center shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:min-h-[500px] md:min-h-[540px] lg:min-h-[580px]"
+        style={{
+          backgroundImage: "url('/images/heroimage.png')",
+        }}
+      >
+        {/* Mobile: strong white overlay for readable content */}
+        <div className="absolute inset-0 bg-white/90 md:hidden" />
 
+        {/* Desktop: same fade as your existing design */}
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.86) 43%, rgba(255,255,255,0.58) 58%, rgba(255,255,255,0.22) 75%, rgba(255,255,255,0) 100%)",
+          }}
+        />
 
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
-
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-100 px-4 py-1.5 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
-            <span className="font-medium text-sm text-emerald-700 tracking-wide">
-              Trusted Healthcare Services
-            </span>
-          </div>
-
-          <img
-            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop"
-            alt="Modern clinic reception area"
-            className="w-full max-w-md h-56 sm:h-64 rounded-2xl object-cover mb-8 lg:hidden shadow-lg shadow-neutral-900/10"
-          />
-
-          <h1 className="font-bold text-neutral-900 text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl leading-[1.1] tracking-tight">
-            Book Your Appointment
-            <span className="block text-emerald-700 mt-1 sm:mt-2">
-              Easily, Anytime, Anywhere
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg md:text-xl text-neutral-500 leading-relaxed max-w-xl mt-6">
-            Book an appointment from your phone with your trusted doctors from anywhere, in just a few taps.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-9 w-full sm:w-auto">
-            <Link
-              href="/booking"
-              className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-semibold px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl shadow-lg shadow-green-600/15 transition-colors duration-200 w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
-            >
-              <Calendar size={20} strokeWidth={2.5} />
-              Book Appointment
-            </Link>
-
-            <Link
-              href="/doctors"
-              className="inline-flex items-center justify-center gap-2 text-base sm:text-lg font-medium px-6 py-3.5 text-neutral-700 hover:text-neutral-900 rounded-xl border border-neutral-200 hover:border-neutral-300 transition-colors duration-200 w-full sm:w-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
-            >
-              Meet our doctors
-              <ArrowRight size={18} strokeWidth={2} />
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-6 mt-10 text-neutral-500 text-sm">
-            <div>
-              <span className="text-neutral-900 font-semibold text-lg">50k+</span>{" "}
-              patients served
+        {/* Content */}
+        <div className="relative z-10 flex min-h-[460px] items-center sm:min-h-[500px] md:min-h-[540px] lg:min-h-[580px]">
+          <div className="w-full max-w-3xl px-5 py-10 text-center sm:px-8 sm:py-12 md:px-12 md:text-left lg:px-16 xl:px-20">
+            {/* Badge */}
+            <div className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#b2ebf2] bg-[#e0f7fa] px-3 py-1.5 shadow-sm sm:mb-5 sm:px-4">
+              <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-[#4bb1c8]" />
+              <span className="truncate text-[12px] font-medium tracking-wide text-[#0f8fa8] sm:text-sm">
+                Trusted Healthcare Services
+              </span>
             </div>
-            <div className="h-4 w-px bg-neutral-200" />
-            <div>
-              <span className="text-neutral-900 font-semibold text-lg">200+</span>{" "}
-              verified doctors
+
+            {/* Heading */}
+            <h1 className="font-serif text-[30px] font-bold leading-[1.15] tracking-tight text-neutral-900 sm:text-[38px] md:text-[44px] lg:text-[50px]">
+              Book Your Appointment
+              <span className="mt-1.5 block text-[#4bb1c8] sm:mt-2">
+                Easily, Anytime, Anywhere
+              </span>
+            </h1>
+
+            {/* Description */}
+            <p className="mx-auto mt-4 max-w-xl text-[14px] leading-relaxed text-neutral-600 sm:mt-5 sm:text-[16px] md:mx-0 md:text-[17px] lg:text-[18px]">
+              Book an appointment from your phone with your trusted doctors from
+              anywhere, in just a few taps.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-7 sm:w-auto sm:flex-row sm:items-center sm:justify-center md:justify-start">
+              <Link
+                href="/booking"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] px-5 py-3 text-[14px] font-semibold text-white shadow-lg shadow-[#4bb1c8]/25 transition-all duration-200 hover:bg-[#1d97b3] active:bg-[#1aa3bf] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2 sm:w-auto sm:px-6 sm:text-[16px]"
+              >
+                <Calendar size={18} strokeWidth={2.5} />
+                Book Appointment
+              </Link>
+
+              <Link
+                href="/doctors"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#4bb1c8] bg-white/85 px-5 py-3 text-[14px] font-medium text-neutral-700 backdrop-blur-sm transition-all duration-200 hover:border-[#b2ebf2] hover:bg-white hover:text-[#4bb1c8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2 sm:w-auto sm:px-6 sm:text-[16px]"
+              >
+                Meet our doctors
+                <ArrowRight size={17} strokeWidth={2} />
+              </Link>
             </div>
-          </div>
-        </div>
 
-
-        <div className="hidden lg:flex w-full lg:w-1/2 justify-center lg:justify-end">
-          <div className="relative w-full max-w-sm md:max-w-lg xl:max-w-xl">
-            <div className="relative w-full h-[420px] xl:h-[520px] overflow-hidden rounded-3xl shadow-2xl shadow-neutral-900/20 ring-1 ring-black/5">
-
-              {images.map((item, index) => (
-                <img
-                  key={index}
-                  src={item.image}
-                  alt={item.alt}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-3xl transition-opacity duration-1000 ease-in-out ${current === index ? "opacity-100" : "opacity-0"
-                    }`}
-                />
-              ))}
-
-              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-b-3xl" />
-
-              <div className="absolute bottom-0 left-0 right-0 p-6 xl:p-8">
-                <h3 className="font-poppins text-2xl xl:text-3xl font-bold mb-2 text-white drop-shadow-sm">
-                  Smart Hospital Management
-                </h3>
-
-                <p className="font-poppins text-sm xl:text-base font-medium leading-relaxed text-neutral-100/90">
-                  Streamline hospital operations, manage patients, doctors,
-                  appointments, and medical records — all in one secure platform.
-                </p>
+            {/* Statistics */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12px] text-neutral-600 sm:mt-7 sm:gap-x-5 sm:text-[13px] md:justify-start">
+              <div className="whitespace-nowrap">
+                <span className="text-[15px] font-semibold text-neutral-900 sm:text-[17px]">
+                  50k+
+                </span>{" "}
+                patients served
               </div>
 
+              <div className="hidden h-4 w-px bg-neutral-300 sm:block" />
 
-              <div className="absolute top-5 right-5 flex gap-1.5">
-                {images.map((_, index) => (
-                  <span
-                    key={index}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${current === index ? "w-6 bg-white" : "w-1.5 bg-white/50"
-                      }`}
-                  />
-                ))}
+              <div className="whitespace-nowrap">
+                <span className="text-[15px] font-semibold text-neutral-900 sm:text-[17px]">
+                  200+
+                </span>{" "}
+                verified doctors
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero1
+export default Hero1;

@@ -1,12 +1,13 @@
 "use client";
-import { whyUs } from "./data";
+
+import { whyUs } from "../../utils/servicesData";
 
 function WhyUsSection() {
     return (
         <section className="border-y border-slate-200 bg-slate-50">
             <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
                 <div className="mx-auto max-w-2xl text-center">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-600">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#4bb1c8]">
                         Why Choose Us
                     </p>
                     <h2 className="mt-2 text-[24px] font-bold text-slate-900 sm:text-[30px]">
@@ -26,8 +27,8 @@ function WhyUsSection() {
                                 key={item.title}
                                 className="rounded-2xl border border-slate-200 bg-white p-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8"
                             >
-                                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 ring-1 ring-emerald-100">
-                                    <Icon size={24} strokeWidth={1.8} className="text-emerald-600" />
+                                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e0f7fa] ring-1 ring-[#b2ebf2]">
+                                    <Icon size={24} strokeWidth={1.8} className="text-[#4bb1c8]" />
                                 </div>
 
                                 <h3 className="mt-5 text-[16px] font-bold text-slate-900 sm:text-[18px]">
