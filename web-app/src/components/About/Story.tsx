@@ -29,7 +29,7 @@ function Story() {
           </div>
 
           {/* Right stats card */}
-          <div className="relative mx-auto w-full max-w-md rounded-2xl bg-gradient-to-br from-[#e0f7fa] to-[#b2ebf2]/40 p-5 shadow-sm ring-1 ring-[#b2ebf2] sm:p-6">
+          <div className="relative mx-auto w-full max-w-md rounded-2xl bg-linear-to-br from-[#e0f7fa] to-[#b2ebf2]/40 p-5 shadow-sm ring-1 ring-[#b2ebf2] sm:p-6">
             <div className="pointer-events-none absolute -right-4 -top-4 h-20 w-20 rounded-full bg-[#b2ebf2]/30 blur-2xl" />
 
             <div className="relative grid grid-cols-2 gap-x-5 gap-y-6 text-center">

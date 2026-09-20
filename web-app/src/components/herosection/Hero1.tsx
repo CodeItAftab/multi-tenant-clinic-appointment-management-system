@@ -7,7 +7,7 @@ const Hero1 = () => {
   return (
     <section className="mx-auto w-full max-w-7xl bg-white px-4 pb-5 pt-6 sm:px-6 sm:pb-6 sm:pt-8 lg:px-10 lg:pb-8 lg:pt-14">
       <div
-        className="relative mx-auto min-h-[460px] overflow-hidden rounded-2xl border border-slate-200 bg-cover bg-center shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:min-h-[500px] md:min-h-[540px] lg:min-h-[580px]"
+        className="relative mx-auto min-h-115 overflow-hidden rounded-2xl border border-slate-200 bg-cover bg-center shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:min-h-125 md:min-h-135 lg:min-h-145"
         style={{
           backgroundImage: "url('/images/heroimage.png')",
         }}
@@ -25,7 +25,7 @@ const Hero1 = () => {
         />
 
         {/* Content */}
-        <div className="relative z-10 flex min-h-[460px] items-center sm:min-h-[500px] md:min-h-[540px] lg:min-h-[580px]">
+        <div className="relative z-10 flex min-h-115 items-center sm:min-h-125 md:min-h-135 lg:min-h-145">
           <div className="w-full max-w-3xl px-5 py-10 text-center sm:px-8 sm:py-12 md:px-12 md:text-left lg:px-16 xl:px-20">
             {/* Badge */}
             <div className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[#b2ebf2] bg-[#e0f7fa] px-3 py-1.5 shadow-sm sm:mb-5 sm:px-4">

@@ -48,7 +48,7 @@ function BookingGuidance() {
                         {/* Heading */}
                         <h2 className="mt-4 text-3xl font-black text-slate-900 sm:text-5xl">
                             Booking Made{" "}
-                            <span className="bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
                                 Simple
                             </span>
                         </h2>

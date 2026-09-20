@@ -4,7 +4,7 @@ import React from "react";
 
 function HeroSection() {
     return (
-        <section className="border-b border-[#cef1f5] bg-gradient-to-br from-[#e0f7fa] via-white to-slate-50">
+        <section className="border-b border-[#cef1f5] bg-linear-to-br from-[#e0f7fa] via-white to-slate-50">
             <div className="mx-auto max-w-7xl px-4 py-10 text-center sm:px-6 sm:py-20 lg:px-10">
                 <span className="inline-flex items-center rounded-full border border-[#b2ebf2] bg-white/80 px-4 py-1.5 text-[13px] font-extrabold uppercase tracking-[0.14em] text-[#4bb1c8] shadow-sm backdrop-blur-sm">
                     Explore Our care

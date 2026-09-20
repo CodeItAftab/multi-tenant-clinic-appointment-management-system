@@ -21,7 +21,7 @@ function FeaturedServices() {
                 {/* Single Line Heading */}
                 <h2 className="mt-4 text-3xl font-black text-slate-900 sm:text-5xl">
                     Advanced Care Across{" "}
-                    <span className="bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
                         All Departments
                     </span>
                 </h2>
@@ -81,7 +81,7 @@ function FeaturedServices() {
             <div className="mt-12 flex justify-center">
                 <Link
                     href="/services"
-                    className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
+                    className="group inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
                 >
                     View All Services
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

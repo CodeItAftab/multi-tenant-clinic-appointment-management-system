@@ -15,7 +15,7 @@ export default function Reschedule() {
 
                 <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 text-center sm:gap-12 sm:p-12 lg:grid-cols-12 lg:gap-14 lg:p-14 lg:text-left">
                     {/* White overlay for readability */}
-                    <div className="absolute inset-0 rounded-3xl bg-white/90 lg:bg-gradient-to-r lg:from-white/95 lg:via-white/80 lg:to-white/40" />
+                    <div className="absolute inset-0 rounded-3xl bg-white/90 lg:bg-linear-to-r lg:from-white/95 lg:via-white/80 lg:to-white/40" />
 
                     {/* Left: Content */}
                     <div className="relative lg:col-span-8">
@@ -28,7 +28,7 @@ export default function Reschedule() {
                         {/* Heading */}
                         <h1 className="mx-auto text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl lg:mx-0 lg:text-5xl">
                             Reschedule in{" "}
-                            <span className="bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
                                 seconds
                             </span>
                         </h1>
@@ -57,7 +57,7 @@ export default function Reschedule() {
 
                     {/* Right: Minimal visual accent */}
                     <div className="mx-auto flex items-center justify-center lg:col-span-4">
-                        <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-gradient-to-br from-[#e0f7fa] to-[#b2ebf2]/50 p-6 ring-1 ring-[#b2ebf2] sm:h-48 sm:w-48">
+                        <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-linear-to-br from-[#e0f7fa] to-[#b2ebf2]/50 p-6 ring-1 ring-[#b2ebf2] sm:h-48 sm:w-48">
                             <div className="text-center">
                                 <RotateCcw className="mx-auto h-10 w-10 text-[#4bb1c8] sm:h-12 sm:w-12" />
                                 <p className="mt-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 sm:text-[11px]">

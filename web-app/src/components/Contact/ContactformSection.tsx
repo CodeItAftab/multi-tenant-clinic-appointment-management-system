@@ -199,7 +199,7 @@ function ContactformSection() {
                     value={form.message}
                     onChange={handleChange}
                     placeholder="How can we help?"
-                    className="min-h-[90px] w-full flex-1 resize-none rounded-lg border border-slate-200 px-3 py-2 text-[13px] text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[#4bb1c8] focus:ring-1 focus:ring-[#4bb1c8]"
+                    className="min-h-22.5 w-full flex-1 resize-none rounded-lg border border-slate-200 px-3 py-2 text-[13px] text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[#4bb1c8] focus:ring-1 focus:ring-[#4bb1c8]"
                   />
                 </div>
 

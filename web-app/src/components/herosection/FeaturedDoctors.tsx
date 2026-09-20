@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Stethoscope, GraduationCap, Star, Calendar, ArrowRight } from "lucide-react";
-import { doctors } from "@/utils/doctorsData";
+import { doctors, Doctor } from "@/utils/doctorsData";
+import DoctorDetailsModal from "../Doctors/DoctorDetailsModal"; // Apne path ke according ise adjust karein
 
 function FeaturedDoctors() {
     const featuredDoctors = doctors.slice(0, 4);
+    const [activeDoctor, setActiveDoctor] = useState<Doctor | null>(null);
 
     return (
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-15  lg:px-10">
@@ -21,7 +24,7 @@ function FeaturedDoctors() {
                 {/* Short Classic Heading */}
                 <h2 className="mt-4 text-2xl font-black text-slate-900 sm:text-5xl">
                     Expert Care You Can{" "}
-                    <span className="bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] bg-clip-text text-transparent">
                         Trust
                     </span>
                 </h2>
@@ -97,12 +100,13 @@ function FeaturedDoctors() {
                                         Book Appointment
                                     </Link>
 
-                                    <Link
-                                        href={`/doctors/${doctor.id}`}
+                                    <button
+                                        type="button"
+                                        onClick={() => setActiveDoctor(doctor)}
                                         className="flex justify-center rounded-xl border border-slate-200 py-2.5 text-[12px] font-bold text-slate-700 transition-all hover:border-[#b2ebf2] hover:bg-[#e0f7fa]/40 hover:text-[#4bb1c8]"
                                     >
                                         View Details
-                                    </Link>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -114,12 +118,20 @@ function FeaturedDoctors() {
             <div className="mt-12 flex justify-center">
                 <Link
                     href="/doctors"
-                    className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
+                    className="group inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
                 >
                     View All Doctors
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </Link>
             </div>
+
+            {/* Render Modal */}
+            {activeDoctor && (
+                <DoctorDetailsModal
+                    doctor={activeDoctor}
+                    onClose={() => setActiveDoctor(null)}
+                />
+            )}
         </section>
     );
 }

@@ -5,7 +5,7 @@ import { Siren, PhoneCall } from "lucide-react";
 
 function HeroSection() {
     return (
-        <section className="relative overflow-hidden border-b border-[#b2ebf2] bg-gradient-to-br from-[#e0f7fa] via-white to-slate-50">
+        <section className="relative overflow-hidden border-b border-[#b2ebf2] bg-linear-to-br from-[#e0f7fa] via-white to-slate-50">
             <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#b2ebf2]/30 blur-3xl" />
             <div className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-[#e0f7fa]/40 blur-3xl" />
 

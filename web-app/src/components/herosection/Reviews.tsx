@@ -164,7 +164,7 @@ export default function Reviews() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/reviews"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
+            className="group inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
           >
             View All Reviews
             <ArrowRight size={16} />

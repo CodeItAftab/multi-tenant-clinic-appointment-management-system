@@ -185,10 +185,10 @@ export default function ReschedulePage() {
                                 <div className="flex flex-col items-center">
                                     <div
                                         className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-all ${step === s.num
-                                                ? "bg-[#4bb1c8] text-white ring-4 ring-[#e0f7fa]"
-                                                : step > s.num
-                                                    ? "bg-[#e0f7fa] text-[#4bb1c8]"
-                                                    : "bg-slate-200 text-slate-500"
+                                            ? "bg-[#4bb1c8] text-white ring-4 ring-[#e0f7fa]"
+                                            : step > s.num
+                                                ? "bg-[#e0f7fa] text-[#4bb1c8]"
+                                                : "bg-slate-200 text-slate-500"
                                             }`}
                                     >
                                         {step > s.num ? "✓" : s.num}
@@ -211,7 +211,7 @@ export default function ReschedulePage() {
                 {/* Error Alert */}
                 {errorMessage && (
                     <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-xs font-semibold text-red-700">
-                        <AlertCircle className="h-4 w-4 flex-shrink-0 text-red-500" />
+                        + <AlertCircle className="h-4 w-4 shrink-0 text-red-500" />
                         <span>{errorMessage}</span>
                     </div>
                 )}
@@ -414,8 +414,8 @@ export default function ReschedulePage() {
                                     <div
                                         onClick={() => handleInputChange("newSession", "morning")}
                                         className={`flex cursor-pointer items-start justify-between rounded-2xl border-2 p-4 transition sm:p-5 ${formData.newSession === "morning"
-                                                ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
-                                                : "border-slate-200 bg-white hover:border-slate-300"
+                                            ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
+                                            : "border-slate-200 bg-white hover:border-slate-300"
                                             }`}
                                     >
                                         <div className="flex items-start gap-3">
@@ -446,8 +446,8 @@ export default function ReschedulePage() {
                                     <div
                                         onClick={() => handleInputChange("newSession", "evening")}
                                         className={`flex cursor-pointer items-start justify-between rounded-2xl border-2 p-4 transition sm:p-5 ${formData.newSession === "evening"
-                                                ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
-                                                : "border-slate-200 bg-white hover:border-slate-300"
+                                            ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
+                                            : "border-slate-200 bg-white hover:border-slate-300"
                                             }`}
                                     >
                                         <div className="flex items-start gap-3">

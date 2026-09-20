@@ -58,7 +58,7 @@ function ServicesSection({
         </div>
 
         {/* Search input */}
-        <div className="flex w-full max-w-[450px] items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm transition-shadow focus-within:border-[#4bb1c8] focus-within:shadow-md lg:w-[450px]">
+        <div className="flex w-full max-w-112.5 items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm transition-shadow focus-within:border-[#4bb1c8] focus-within:shadow-md lg:w-112.5">
           <Search size={19} className="ml-2 shrink-0 text-slate-400" />
 
           <input
@@ -91,7 +91,7 @@ function ServicesSection({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
             {filteredServices.map((service) => (
               <ServiceCard key={service.title} service={service} />
             ))}

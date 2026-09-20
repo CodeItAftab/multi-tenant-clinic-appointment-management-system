@@ -21,7 +21,7 @@ function LocationSection() {
         {/* Content */}
         <div className="mt-7 grid gap-5 lg:grid-cols-[1fr_1.3fr] lg:items-stretch lg:gap-7">
           {/* Left: info card */}
-          <div className="flex h-full flex-col justify-between rounded-2xl border border-[#b2ebf2] bg-gradient-to-br from-[#e0f7fa] via-white to-[#b2ebf2]/50 p-6 shadow-sm sm:p-7">
+          <div className="flex h-full flex-col justify-between rounded-2xl border border-[#b2ebf2] bg-linear-to-br from-[#e0f7fa] via-white to-[#b2ebf2]/50 p-6 shadow-sm sm:p-7">
             <div>
               <h3 className="text-[18px] font-bold text-slate-900 sm:text-[20px]">
                 {locationInfo.name}
@@ -74,11 +74,11 @@ function LocationSection() {
           </div>
 
           {/* Right map */}
-          <div className="h-full min-h-[280px] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:min-h-[340px] lg:min-h-0">
+          <div className="h-full min-h-70 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:min-h-85 lg:min-h-0">
             <iframe
               title={`Map showing ${locationInfo.name}`}
               src={locationInfo.mapEmbedSrc}
-              className="h-full min-h-[280px] w-full border-0 sm:min-h-[340px] lg:min-h-0"
+              className="h-full min-h-70 w-full border-0 sm:min-h-85 lg:min-h-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />

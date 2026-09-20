@@ -43,7 +43,7 @@ function DoctorDetailsModal({ doctor, onClose }: DoctorDetailsModalProps) {
             >
                 <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.3fr]">
                     {/* Left: photo panel */}
-                    <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-gradient-to-br from-[#4bb1c8] via-[#33b6d3] to-[#1aa3bf] p-10 sm:p-8">
+                    <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden bg-linear-to-br from-[#4bb1c8] via-[#33b6d3] to-[#1aa3bf] p-10 sm:p-8">
                         <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
                         <div className="pointer-events-none absolute -right-8 bottom-0 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
 

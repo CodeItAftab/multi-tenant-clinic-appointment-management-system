@@ -38,14 +38,13 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 w-full bg-white transition-shadow duration-300 ${
-        isScrolled
-          ? "border-b border-gray-200 shadow-sm"
-          : "border-b border-transparent shadow-none"
-      }`}
+      className={`sticky top-0 z-50 w-full bg-white transition-shadow duration-300 ${isScrolled
+        ? "border-b border-gray-200 shadow-sm"
+        : "border-b border-transparent shadow-none"
+        }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="flex h-[88px] items-center justify-between">
+        <div className="flex h-22 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 sm:gap-4">
             <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-[#e0f7fa] ring-1 ring-[#b2ebf2] shadow-sm">
@@ -53,7 +52,7 @@ function Navbar() {
                 size={26}
                 strokeWidth={5}
                 absoluteStrokeWidth
-                className="h-[26px] w-[26px] text-[#4bb1c8] sm:h-[30px] sm:w-[30px]"
+                className="h-6.5 w-6.5 text-[#4bb1c8] sm:h-7.5 sm:w-7.5"
               />
             </div>
 
@@ -73,11 +72,11 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="group relative py-6 text-[14px] font-medium text-[#282828] transition-all duration-300 ease-out hover:-translate-y-[2px] hover:text-[#4bb1c8]"
+                className="group relative py-6 text-[14px] font-medium text-[#282828] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#4bb1c8]"
               >
                 {link.name}
 
-                <span className="absolute left-1/2 bottom-[18px] h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#4bb1c8] transition-all duration-300 ease-out group-hover:w-full" />
+                <span className="absolute left-1/2 bottom-4.5 h-0.5 w-0 -translate-x-1/2 rounded-full bg-[#4bb1c8] transition-all duration-300 ease-out group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -89,7 +88,7 @@ function Navbar() {
               <select
                 value={language}
                 onChange={(e) => handleLanguageChange(e.target.value)}
-                className="font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2 py-2.5 lg:py-3 pl-3 pl-4 pr-8 pr-10 text-[12px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa] sm:py-2.5 sm:pl-4 sm:pr-10 sm:text-[14px]"
+                className="font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2 sm:py-2.5 lg:py-3 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[12px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa] sm:text-[14px]"
               >
                 <option value="English">English</option>
                 <option value="Hindi">हिंदी</option>
