@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Stethoscope, GraduationCap, Star, Calendar, ArrowRight } from "lucide-react";
 import { doctors, Doctor } from "@/utils/doctorsData";
-import DoctorDetailsModal from "../Doctors/DoctorDetailsModal"; // Apne path ke according ise adjust karein
+import DoctorDetailsModal from "../Doctors/DoctorDetailsModal";
 
 function FeaturedDoctors() {
     const featuredDoctors = doctors.slice(0, 4);
