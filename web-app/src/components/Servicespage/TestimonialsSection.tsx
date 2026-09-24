@@ -1,13 +1,14 @@
 "use client";
+
 import { Star } from "lucide-react";
-import { testimonials } from "./data";
+import { testimonials } from "../../utils/servicesData";
 
 function TestimonialsSection() {
     return (
         <section className="border-y border-slate-200 bg-slate-50">
             <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
                 <div className="mx-auto max-w-2xl text-center">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-600">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#4bb1c8]">
                         Patient Stories
                     </p>
                     <h2 className="mt-2 text-[24px] font-bold text-slate-900 sm:text-[30px]">
@@ -26,7 +27,9 @@ function TestimonialsSection() {
                                     <Star
                                         key={i}
                                         size={15}
-                                        className={i < t.rating ? "fill-amber-400 text-amber-400" : "text-slate-200"}
+                                        className={
+                                            i < t.rating ? "fill-amber-400 text-amber-400" : "text-slate-200"
+                                        }
                                     />
                                 ))}
                             </div>
@@ -36,7 +39,7 @@ function TestimonialsSection() {
                             </p>
 
                             <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
-                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-100 text-[13px] font-bold text-emerald-700">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e0f7fa] text-[13px] font-bold text-[#4bb1c8]">
                                     {t.name.charAt(0)}
                                 </div>
                                 <div>

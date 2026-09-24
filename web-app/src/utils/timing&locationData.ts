@@ -49,6 +49,67 @@ export const otherHours: ServiceHours[] = [
     },
 ];
 
+// Floor-wise services — shown in the Floor Directory card on the
+// Timings & Location page. `floor` is the badge text (G, 1, 2, 3).
+export type FloorGuide = {
+    floor: string;
+    label: string;
+    tagline: string;
+    services: string[];
+};
+
+export const floorDirectory: FloorGuide[] = [
+    {
+        floor: "G",
+        label: "Ground Floor",
+        tagline: "First visit? Start here.",
+        services: [
+            "Reception & Registration",
+            "General OPD",
+            "Emergency & Trauma",
+            "Pharmacy",
+            "Billing & Insurance",
+        ],
+    },
+    {
+        floor: "1",
+        label: "First Floor",
+        tagline: "All tests and sample collection.",
+        services: [
+            "Diagnostics & Labs",
+            "Sample Collection",
+            "X-Ray & Ultrasound",
+            "ECG",
+            "Report Counter",
+        ],
+    },
+    {
+        floor: "2",
+        label: "Second Floor",
+        tagline: "Specialist consultation, by appointment.",
+        services: [
+            "Cardiology",
+            "Neurology",
+            "Orthopaedics",
+            "Paediatrics",
+            "Gynaecology",
+            "Dermatology",
+        ],
+    },
+    {
+        floor: "3",
+        label: "Third Floor",
+        tagline: "Surgery and admitted patients.",
+        services: [
+            "Operation Theatre",
+            "ICU",
+            "Private Rooms",
+            "General Ward",
+            "Nursing Station",
+        ],
+    },
+];
+
 export const locationInfo = {
     name: "HOSPITAL MANAGEMENT SYSTEM",
     addressLine1: "Dehri-on-sone, Near Bus Stand Chowk",
@@ -56,7 +117,7 @@ export const locationInfo = {
     phone: "+91 12345 67890",
     phoneHref: "tel:+911234567890",
     email: "hms@care.exampe",
-  
+
     mapQuery: "Dehri-on-Sone, Rohtas, Bihar",
     mapEmbedSrc:
         "https://maps.google.com/maps?q=Dehri-on-Sone%2C%20Rohtas%2C%20Bihar&t=&z=14&ie=UTF8&iwloc=&output=embed",
@@ -74,7 +135,7 @@ export const quickFacts: QuickFact[] = [
     { label: "Ambulance", value: "24/7 dispatch, average response 12 minutes" },
     { label: "Admitted Patient Visiting", value: "10:00 AM – 12:00 PM & 5:00 PM – 7:00 PM" },
     { label: "ID Requirement", value: "Carry a government photo ID for registration" },
-    { label: "Nearest Landmark", value: "5 min from Purnia Junction Railway Station" },
+    { label: "Nearest Landmark", value: "5 min from Dehri-on-Sone Railway Station" },
 ];
 
 export type VisitFaq = {
@@ -94,6 +155,10 @@ export const visitFaqs: VisitFaq[] = [
     {
         q: "What should I bring for my first visit?",
         a: "A government photo ID, any previous prescriptions or reports, and your insurance card if applicable.",
+    },
+    {
+        q: "Which floor do I go to?",
+        a: "Registration and General OPD are on the ground floor. Labs and imaging are on the first floor, specialist OPD on the second, and wards, ICU and OT on the third.",
     },
     {
         q: "Can I visit an admitted patient outside visiting hours?",

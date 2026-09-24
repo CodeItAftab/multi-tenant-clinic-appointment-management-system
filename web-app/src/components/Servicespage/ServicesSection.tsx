@@ -1,74 +1,104 @@
 "use client";
 
-import React from "react";
-import { services, categories } from "./data";
-import ServiceCard from "./Servicecard";
+import { Search } from "lucide-react";
+import { services, categories } from "../../utils/servicesData";
+import ServiceCard from "./ServiceCard";
 
 type ServicesSectionProps = {
-    searchTerm: string;
-    activeCategory: string;
-    setActiveCategory: (value: string) => void;
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
+  activeCategory: string;
+  setActiveCategory: (value: string) => void;
 };
 
 function ServicesSection({
-    searchTerm,
-    activeCategory,
-    setActiveCategory,
+  searchTerm,
+  setSearchTerm,
+  activeCategory,
+  setActiveCategory,
 }: ServicesSectionProps) {
-    const filteredServices = services.filter((s) => {
-        const matchesSearch = s.title.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = activeCategory === "All" || s.category === activeCategory;
-        return matchesSearch && matchesCategory;
-    });
+  const filteredServices = services.filter((service) => {
+    const query = searchTerm.trim().toLowerCase();
 
-    return (
-        <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
-            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-600">
-                        Explore Our Care
-                    </p>
-                    <h2 className="mt-2 text-[24px] font-bold tracking-tight text-slate-900 sm:text-[30px]">
-                        Medical services designed around you
-                    </h2>
-                </div>
+    const serviceTitle = service.title.toLowerCase();
+    const serviceCategory = service.category.toLowerCase();
+    const serviceDescription = service.desc.toLowerCase();
 
-                <p className="max-w-md text-[13px] leading-relaxed text-slate-500 sm:text-right sm:text-[14px]">
-                    Get access to trusted healthcare services, experienced doctors, and modern
-                    treatment facilities.
-                </p>
-            </div>
+    const matchesSearch =
+      serviceTitle.includes(query) ||
+      serviceCategory.includes(query) ||
+      serviceDescription.includes(query);
 
-            <div className="mb-8 flex flex-wrap items-center gap-2">
-                {categories.map((cat) => (
-                    <button
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${activeCategory === cat
-                            ? "border-emerald-600 bg-emerald-600 text-white shadow-sm"
-                            : "border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:text-emerald-600"
-                            }`}
-                    >
-                        {cat}
-                    </button>
-                ))}
-            </div>
+    const matchesCategory =
+      activeCategory === "All" || service.category === activeCategory;
 
-            {filteredServices.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-slate-200 py-16 text-center">
-                    <p className="text-[14px] font-semibold text-slate-500">
-                        No services found matching &quot;{searchTerm}&quot;
-                    </p>
-                </div>
-            ) : (
-                <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
-                    {filteredServices.map((service) => (
-                        <ServiceCard key={service.title} service={service} />
-                    ))}
-                </div>
-            )}
-        </section>
-    );
+    return matchesSearch && matchesCategory;
+  });
+
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-2 lg:px-10">
+      {/* Filters + Search */}
+      <div className="mt-8 flex flex-col items-center justify-center gap-4 lg:flex-row">
+        {/* Category buttons */}
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${activeCategory === cat
+                ? "border-[#4bb1c8] bg-[#4bb1c8] text-white shadow-sm"
+                : "border-slate-200 bg-white text-slate-600 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Search input */}
+        <div className="flex w-full max-w-112.5 items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm transition-shadow focus-within:border-[#4bb1c8] focus-within:shadow-md lg:w-112.5">
+          <Search size={19} className="ml-2 shrink-0 text-slate-400" />
+
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Search for a service (e.g. Cardiology, Dental...)"
+            className="w-full bg-transparent px-1 py-2 text-[14px] text-slate-700 outline-none placeholder:text-slate-400"
+          />
+        </div>
+      </div>
+
+      {/* Cards */}
+      <div className="mt-10">
+        {filteredServices.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-slate-200 py-16 text-center">
+            <p className="text-[14px] font-semibold text-slate-500">
+              No services found matching &quot;{searchTerm}&quot;
+            </p>
+
+            <button
+              type="button"
+              onClick={() => {
+                setSearchTerm("");
+                setActiveCategory("All");
+              }}
+              className="mt-4 rounded-full bg-[#4bb1c8] px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#33b6d3]"
+            >
+              Clear filters
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+            {filteredServices.map((service) => (
+              <ServiceCard key={service.title} service={service} />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
 }
 
 export default ServicesSection;

@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar/Navbar";
 import GoogleTranslate from "../components/GoogleTranslate/GoogleTranslate";
 import Footer from "@/components/Footer/Footer";
-
+import MobileBottomNav from "@/components/Navbar/MobileBottomNav";
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
@@ -36,6 +36,7 @@ export default function RootLayout({
         <GoogleTranslate />
         <Navbar />
         {children}
+        <MobileBottomNav />
         <Footer />
       </body>
     </html>
