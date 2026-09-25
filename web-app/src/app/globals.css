@@ -46,7 +46,8 @@ body {
 
 .goog-te-gadget {
     height: 0;
-    overflow: hidden;
+    display: none;
+    overflow: hidden !important;
 }
 
 #google_translate_element {
@@ -55,4 +56,69 @@ body {
 
 .skiptranslate iframe {
     display: none !important;
+}
+/* Hide Google Translate tooltip popup on hover */
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+/* Prevent Google Translate from highlighting text on hover */
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Hide the Google Translate top banner bar */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+/* Disable Google Translate text highlights, background overlays, and box shadows */
+.goog-text-highlight,
+font[style*="background-color"],
+span[style*="background-color"],
+.VIpgJd-yA0T2d-yA0T2d,
+.VIpgJd-yA0T2d-yA0T2d:hover {
+  background-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+  border: none !important;
+}
+
+/* Ensure body pointer events and user interactions aren't blocked */
+font {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+/* Hide all Google Translate popups, frames, and badges */
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.VIpgJd-Z4411e-b9A44e-s2gR3-w33S2d,
+.VIpgJd-Z4411e-b9A44e,
+.goog-te-gadget-icon {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Remove text hover background highlights */
+.goog-text-highlight,
+font[style*="background-color"] {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Fix layout shift */
+body {
+  top: 0px !important;
+  position: static !important;
 }

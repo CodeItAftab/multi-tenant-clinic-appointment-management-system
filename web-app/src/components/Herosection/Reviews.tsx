@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import {
   Star,
   Quote,
@@ -8,6 +8,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import Link from "next/link";
+import ReviewModal from "./ReviewModals";
 
 // Review item interface
 interface Review {
@@ -85,6 +86,7 @@ const reviewsData: Review[] = [
 ];
 
 export default function Reviews() {
+  const [reviewOpen, setReviewOpen] = useState(false);
   const displayedReviews = reviewsData.slice(0, 4);
 
   return (
@@ -199,6 +201,8 @@ export default function Reviews() {
                 📅 Book Appointment
               </Link>
               <button
+                type="button"
+                onClick={() => setReviewOpen(true)}
                 className="inline-flex items-center justify-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3.5 rounded-xl transition text-sm"
               >
                 Leave a Review
@@ -208,6 +212,17 @@ export default function Reviews() {
         </div>
 
       </div>
+
+      {/* ================= REVIEW POPUP ================= */}
+      <ReviewModal
+        open={reviewOpen}
+        onClose={() => setReviewOpen(false)}
+        onSubmit={async (review: any) => {
+          // Wire this up to your API, e.g.:
+          // await fetch("/api/reviews", { method: "POST", body: JSON.stringify(review) });
+          setReviewOpen(false);
+        }}
+      />
     </section>
   )
 }

@@ -16,7 +16,7 @@ function TestimonialsSection() {
                     </h2>
                 </div>
 
-                <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-3">
                     {testimonials.map((t) => (
                         <article
                             key={t.name}
