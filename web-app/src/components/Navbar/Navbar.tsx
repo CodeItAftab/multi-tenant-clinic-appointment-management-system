@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Plus, ChevronDown, Menu, X } from "lucide-react";
 import { changeGoogleTranslateLanguage } from "@/utils/googleTranslate";
+import { LanguageSelector } from "./LanguageSelector";
 
 function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -38,7 +39,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 w-full bg-white transition-shadow duration-300 ${isScrolled
+      className={`sticky top-0 z-30 w-full bg-white transition-shadow duration-300 ${isScrolled
         ? "border-b border-gray-200 shadow-sm"
         : "border-b border-transparent shadow-none"
         }`}
@@ -81,70 +82,45 @@ function Navbar() {
             ))}
           </div>
 
-          {/* Right side: Language + Mobile toggle */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language selector (desktop) */}
-            <div className="relative hidden lg:block">
-              <select
-                value={language}
-                onChange={(e) => handleLanguageChange(e.target.value)}
-                className="font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2 sm:py-2.5 lg:py-3 pl-3 sm:pl-4 pr-8 sm:pr-10 text-[12px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa] sm:text-[14px]"
-              >
-                <option value="English">English</option>
-                <option value="Hindi">हिंदी</option>
-              </select>
-
-              <ChevronDown
-                size={14}
-                className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-500 sm:right-3"
-              />
-            </div>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMobileMenu(!mobileMenu)}
-              className="rounded-lg p-2 text-[#282828] hover:text-[#4bb1c8] focus:outline-none lg:hidden"
-              aria-label="Toggle mobile menu"
-            >
-              {mobileMenu ? <X size={26} /> : <Menu size={26} />}
-            </button>
+          <div>
+            <LanguageSelector />
           </div>
-        </div>
 
-        {/* Mobile Menu */}
-        {mobileMenu && (
-          <div className="animate-in fade-in slide-in-from-top-2 border-t border-gray-100 py-4 duration-200 lg:hidden">
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenu(false)}
-                  className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8]"
-                >
-                  {link.name}
-                </Link>
-              ))}
+          {/* Mobile Menu */}
+          {mobileMenu && (
+            <div className="animate-in fade-in slide-in-from-top-2 border-t border-gray-100 py-4 duration-200 lg:hidden">
+              <div className="flex flex-col gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenu(false)}
+                    className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8]"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
 
-              {/* Language selector (mobile) */}
-              <div className="relative mt-2 px-4">
-                <select
-                  value={language}
-                  onChange={(e) => handleLanguageChange(e.target.value)}
-                  className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa]"
-                >
-                  <option value="English">English</option>
-                  <option value="Hindi">हिंदी</option>
-                </select>
+                {/* Language selector (mobile) */}
+                <div className="relative mt-2 px-4">
+                  <select
+                    value={language}
+                    onChange={(e) => handleLanguageChange(e.target.value)}
+                    className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa]"
+                  >
+                    <option value="English">English</option>
+                    <option value="Hindi">हिंदी</option>
+                  </select>
 
-                <ChevronDown
-                  size={14}
-                  className="pointer-events-none absolute right-7 top-1/2 -translate-y-1/2 text-gray-500"
-                />
+                  <ChevronDown
+                    size={14}
+                    className="pointer-events-none absolute right-7 top-1/2 -translate-y-1/2 text-gray-500"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </nav>
   );

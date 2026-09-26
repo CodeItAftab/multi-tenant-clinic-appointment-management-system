@@ -1,13 +1,17 @@
 "use client"
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import {
   Star,
   Quote,
   CheckCircle2,
   HeartHandshake,
-  ArrowRight
+  ArrowRight,
+  X
 } from "lucide-react";
 import Link from "next/link";
+import ReviewModal from "./ReviewModals";
+import Booking from "../Forms/Booking";
 
 // Review item interface
 interface Review {
@@ -85,7 +89,27 @@ const reviewsData: Review[] = [
 ];
 
 export default function Reviews() {
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const displayedReviews = reviewsData.slice(0, 4);
+
+  // Ensure portal rendering occurs only on the client side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock body scroll when a modal is open for seamless UX
+  useEffect(() => {
+    if (bookingOpen || reviewOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [bookingOpen, reviewOpen]);
 
   return (
     <section className="bg-white py-15 pb-20">
@@ -191,14 +215,17 @@ export default function Reviews() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3.5 w-full md:w-auto">
-              <Link
-                href={"/booking"}
+            <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-7 sm:w-auto sm:flex-row sm:items-center sm:justify-center md:justify-start">
+              <button
+                onClick={() => setBookingOpen(true)}
                 className="inline-flex items-center justify-center gap-2 bg-[#4bb1c8] hover:bg-[#33b6d3] text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-[#4bb1c8]/30 transition text-sm"
               >
                 📅 Book Appointment
-              </Link>
+              </button>
+
               <button
+                type="button"
+                onClick={() => setReviewOpen(true)}
                 className="inline-flex items-center justify-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3.5 rounded-xl transition text-sm"
               >
                 Leave a Review
@@ -208,6 +235,51 @@ export default function Reviews() {
         </div>
 
       </div>
+
+      {/* ================= PORTAL-BASED BOOKING MODAL ================= */}
+      {bookingOpen && mounted && createPortal(
+        <div className="fixed inset-0 z-9999 flex items-center justify-center p-4 sm:p-6 text-left">
+          {/* Dark Backdrop */}
+          <div
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setBookingOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Modal Container */}
+          <div className="relative z-10000 w-full max-w-3xl max-h-[85vh] flex flex-col bg-white rounded-2xl shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
+            
+            {/* Dedicated Header Bar with Close Button */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white sticky top-0 z-50">
+              <h3 className="text-base font-bold text-slate-900">
+                Book Your Appointment
+              </h3>
+              <button
+                onClick={() => setBookingOpen(false)}
+                aria-label="Close booking form"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
+              >
+                <X className="h-5 w-5" strokeWidth={2.5} />
+              </button>
+            </div>
+
+            {/* Scrollable Form Area */}
+            <div className="overflow-y-auto p-4 sm:p-6">
+              <Booking />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* ================= REVIEW POPUP ================= */}
+      <ReviewModal
+        open={reviewOpen}
+        onClose={() => setReviewOpen(false)}
+        onSubmit={async (review: any) => {
+          setReviewOpen(false);
+        }}
+      />
     </section>
-  )
+  );
 }

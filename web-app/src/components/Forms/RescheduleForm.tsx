@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
@@ -41,9 +41,9 @@ export default function ReschedulePage() {
     const [errorMessage, setErrorMessage] = useState<string>("");
 
     const [formData, setFormData] = useState<RescheduleFormData>({
-        ticketID: "SFC-045-01",
-        phone: "9876543210",
-        newDate: "2026-05-28",
+        ticketID: "",
+        phone: "",
+        newDate: "",
         newSession: "morning",
     });
 
@@ -134,13 +134,13 @@ export default function ReschedulePage() {
         setConfirmedData({
             ticketNumber: formData.ticketID,
             newTokenNumber: newGeneratedToken,
-            patientName: "Rahul Sharma",
-            doctorName: "Dr. Anjali Verma",
+            patientName: "",
+            doctorName: "",
             newDate: formData.newDate,
             sessionText:
                 formData.newSession === "morning"
-                    ? "9:00 AM – 2:00 PM (Morning)"
-                    : "3:00 PM – 5:00 PM (Evening)",
+                    ? "9:00 AM â€“ 2:00 PM (Morning)"
+                    : "3:00 PM â€“ 5:00 PM (Evening)",
             smsTime: new Date().toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
@@ -158,18 +158,18 @@ export default function ReschedulePage() {
     });
 
     return (
-        <div className="min-h-screen bg-slate-50 py-10 px-4 font-sans antialiased text-slate-800 sm:px-6 lg:px-8">
+        <div className="w-full bg-white py-8 px-4 font-sans antialiased rounded-2xl text-neutral-600 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
                 {/* ================= HEADER & STEPPER ================= */}
                 <div className="mb-8 text-center">
-                    <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-[#b2ebf2] bg-[#e0f7fa] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#4bb1c8]">
+                    <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-[#b2ebf2] bg-[#e0f7fa] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#0f8fa8]">
                         <RotateCcw className="h-3.5 w-3.5" />
                         Flow 2: Reschedule Appointment
                     </div>
-                    <h1 className="tracking-tight text-3xl font-extrabold text-slate-900">
+                    <h1 className="tracking-tight text-3xl font-extrabold text-neutral-900">
                         Sunrise Family Clinic
                     </h1>
-                    <p className="mt-1 text-sm text-slate-500">
+                    <p className="mt-1 text-sm text-neutral-600">
                         Easily update your consultation slot with zero penalty fees
                     </p>
 
@@ -187,13 +187,13 @@ export default function ReschedulePage() {
                                         className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-all ${step === s.num
                                             ? "bg-[#4bb1c8] text-white ring-4 ring-[#e0f7fa]"
                                             : step > s.num
-                                                ? "bg-[#e0f7fa] text-[#4bb1c8]"
-                                                : "bg-slate-200 text-slate-500"
+                                                ? "bg-[#e0f7fa] text-[#0f8fa8]"
+                                                : "bg-slate-200 text-neutral-600"
                                             }`}
                                     >
-                                        {step > s.num ? "✓" : s.num}
+                                        {step > s.num ? "âœ“" : s.num}
                                     </div>
-                                    <span className="mt-1.5 hidden text-[11px] font-semibold text-slate-500 sm:block">
+                                    <span className="mt-1.5 hidden text-[11px] font-semibold text-neutral-600 sm:block">
                                         {s.label}
                                     </span>
                                 </div>
@@ -218,13 +218,13 @@ export default function ReschedulePage() {
 
                 {/* ================= STEP 1 ================= */}
                 {step === 1 && (
-                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:p-8">
                         <div className="space-y-6">
-                            <div className="border-b border-slate-100 pb-4">
-                                <h2 className="text-xl font-bold text-slate-900">
+                            <div className="border-b border-neutral-300 pb-4">
+                                <h2 className="text-xl font-bold text-neutral-900">
                                     1. Enter Ticket & Phone
                                 </h2>
-                                <p className="mt-0.5 text-xs text-slate-500">
+                                <p className="mt-0.5 text-xs text-neutral-600">
                                     Provide your existing ticket number and registered mobile
                                     number to fetch your booking
                                 </p>
@@ -232,11 +232,11 @@ export default function ReschedulePage() {
 
                             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-bold text-slate-700">
+                                    <label className="mb-1.5 block text-xs font-bold text-neutral-700">
                                         Existing Ticket Number *
                                     </label>
                                     <div className="relative">
-                                        <Ticket className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
+                                        <Ticket className="absolute left-3.5 top-3 h-4 w-4 text-neutral-400" />
                                         <input
                                             type="text"
                                             value={formData.ticketID}
@@ -248,11 +248,11 @@ export default function ReschedulePage() {
                                 </div>
 
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-bold text-slate-700">
+                                    <label className="mb-1.5 block text-xs font-bold text-neutral-700">
                                         Registered Phone Number *
                                     </label>
                                     <div className="relative">
-                                        <Phone className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
+                                        <Phone className="absolute left-3.5 top-3 h-4 w-4 text-neutral-400" />
                                         <input
                                             type="tel"
                                             maxLength={10}
@@ -269,7 +269,7 @@ export default function ReschedulePage() {
                                 <button
                                     type="button"
                                     onClick={handleSendOTP}
-                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] px-8 py-3 font-bold text-white shadow-md shadow-[#4bb1c8]/20 transition hover:bg-[#33b6d3] sm:w-auto"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] px-8 py-3 font-bold text-white shadow-lg shadow-[#4bb1c8]/25 transition hover:bg-[#1d97b3] sm:w-auto"
                                 >
                                     Send OTP <ArrowRight className="h-4 w-4" />
                                 </button>
@@ -280,15 +280,15 @@ export default function ReschedulePage() {
 
                 {/* ================= STEP 2 ================= */}
                 {step === 2 && (
-                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:p-8">
                         <div className="space-y-6">
-                            <div className="border-b border-slate-100 pb-4 text-center sm:text-left">
-                                <h2 className="text-xl font-bold text-slate-900">
+                            <div className="border-b border-neutral-300 pb-4 text-center sm:text-left">
+                                <h2 className="text-xl font-bold text-neutral-900">
                                     2. OTP Verification
                                 </h2>
-                                <p className="mt-0.5 text-xs text-slate-500">
+                                <p className="mt-0.5 text-xs text-neutral-600">
                                     Enter the 6-digit OTP sent to{" "}
-                                    <strong className="text-slate-800">
+                                    <strong className="text-neutral-700">
                                         +91 {formData.phone}
                                     </strong>
                                 </p>
@@ -307,24 +307,24 @@ export default function ReschedulePage() {
                                         value={digit}
                                         onChange={(e) => handleOtpChange(idx, e.target.value)}
                                         onKeyDown={(e) => handleOtpKeyDown(idx, e)}
-                                        className="h-12 w-11 rounded-xl border-2 border-slate-200 bg-slate-50 text-center text-xl font-bold text-slate-900 outline-none transition focus:border-[#4bb1c8] focus:bg-white focus:ring-2 focus:ring-[#e0f7fa] sm:h-14 sm:w-13"
+                                        className="h-12 w-11 rounded-xl border-2 border-slate-200 bg-white text-center text-xl font-bold text-neutral-900 outline-none transition focus:border-[#4bb1c8] focus:bg-white focus:ring-2 focus:ring-[#e0f7fa] sm:h-14 sm:w-13"
                                     />
                                 ))}
                             </div>
 
-                            <div className="text-center text-xs text-slate-500">
+                            <div className="text-center text-xs text-neutral-600">
                                 {isResendActive ? (
                                     <button
                                         type="button"
                                         onClick={handleResendOtp}
-                                        className="font-bold text-[#4bb1c8] underline hover:text-[#1aa3bf]"
+                                        className="font-bold text-[#0f8fa8] underline hover:text-[#1aa3bf]"
                                     >
                                         Resend OTP Now
                                     </button>
                                 ) : (
                                     <span>
                                         Resend OTP in{" "}
-                                        <strong className="text-slate-800">
+                                        <strong className="text-neutral-700">
                                             00:{timer < 10 ? `0${timer}` : timer}
                                         </strong>
                                     </span>
@@ -335,7 +335,7 @@ export default function ReschedulePage() {
                                 <button
                                     type="button"
                                     onClick={() => setStep(1)}
-                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-slate-900"
+                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-600 hover:text-neutral-900"
                                 >
                                     <ArrowLeft className="h-4 w-4" /> Change Details
                                 </button>
@@ -343,7 +343,7 @@ export default function ReschedulePage() {
                                 <button
                                     type="button"
                                     onClick={handleVerifyOtp}
-                                    className="inline-flex items-center gap-2 rounded-xl bg-[#4bb1c8] px-7 py-3 text-xs font-bold text-white shadow-md shadow-[#4bb1c8]/20 transition hover:bg-[#33b6d3]"
+                                    className="inline-flex items-center gap-2 rounded-xl bg-[#4bb1c8] px-7 py-3 text-xs font-bold text-white shadow-lg shadow-[#4bb1c8]/25 transition hover:bg-[#1d97b3]"
                                 >
                                     Verify & Choose New Slot{" "}
                                     <ArrowRight className="h-4 w-4" />
@@ -355,45 +355,45 @@ export default function ReschedulePage() {
 
                 {/* ================= STEP 3 ================= */}
                 {step === 3 && (
-                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:p-8">
                         <div className="space-y-6">
-                            <div className="border-b border-slate-100 pb-4">
-                                <h2 className="text-xl font-bold text-slate-900">
+                            <div className="border-b border-neutral-300 pb-4">
+                                <h2 className="text-xl font-bold text-neutral-900">
                                     3. Choose New Date & Session
                                 </h2>
-                                <p className="mt-0.5 text-xs text-slate-500">
+                                <p className="mt-0.5 text-xs text-neutral-600">
                                     Pick your preferred new date and consultation window (No
                                     additional payment required)
                                 </p>
                             </div>
 
-                            <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs">
+                            <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 text-xs">
                                 <div>
-                                    <span className="font-medium text-slate-400">Ticket:</span>
-                                    <span className="ml-1 font-mono font-bold text-slate-900">
+                                    <span className="font-medium text-neutral-400">Ticket:</span>
+                                    <span className="ml-1 font-mono font-bold text-neutral-900">
                                         {formData.ticketID}
                                     </span>
                                 </div>
                                 <div>
-                                    <span className="font-medium text-slate-400">Patient:</span>
-                                    <span className="ml-1 font-bold text-slate-900">
+                                    <span className="font-medium text-neutral-400">Patient:</span>
+                                    <span className="ml-1 font-bold text-neutral-900">
                                         Rahul Sharma
                                     </span>
                                 </div>
                                 <div>
-                                    <span className="font-medium text-slate-400">Doctor:</span>
-                                    <span className="ml-1 font-bold text-[#4bb1c8]">
+                                    <span className="font-medium text-neutral-400">Doctor:</span>
+                                    <span className="ml-1 font-bold text-[#0f8fa8]">
                                         Dr. Anjali Verma
                                     </span>
                                 </div>
                             </div>
 
                             <div>
-                                <label className="mb-1.5 block text-xs font-bold text-slate-700">
+                                <label className="mb-1.5 block text-xs font-bold text-neutral-700">
                                     Select New Date *
                                 </label>
                                 <div className="relative">
-                                    <CalendarIcon className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
+                                    <CalendarIcon className="absolute left-3.5 top-3 h-4 w-4 text-neutral-400" />
                                     <input
                                         type="date"
                                         value={formData.newDate}
@@ -406,7 +406,7 @@ export default function ReschedulePage() {
                             </div>
 
                             <div>
-                                <label className="mb-2 block text-xs font-bold text-slate-700">
+                                <label className="mb-2 block text-xs font-bold text-neutral-700">
                                     Select Session Window
                                 </label>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -415,22 +415,22 @@ export default function ReschedulePage() {
                                         onClick={() => handleInputChange("newSession", "morning")}
                                         className={`flex cursor-pointer items-start justify-between rounded-2xl border-2 p-4 transition sm:p-5 ${formData.newSession === "morning"
                                             ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
-                                            : "border-slate-200 bg-white hover:border-slate-300"
+                                            : "border-slate-200 bg-white hover:border-neutral-300"
                                             }`}
                                     >
                                         <div className="flex items-start gap-3">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e0f7fa] text-[#0f8fa8]">
                                                 <Sun className="h-5 w-5" />
                                             </div>
                                             <div>
-                                                <h3 className="text-sm font-bold text-slate-900">
+                                                <h3 className="text-sm font-bold text-neutral-900">
                                                     Morning Session
                                                 </h3>
-                                                <p className="mt-0.5 text-xs font-bold text-slate-700">
-                                                    9:00 AM – 2:00 PM
+                                                <p className="mt-0.5 text-xs font-bold text-neutral-700">
+                                                    9:00 AM â€“ 2:00 PM
                                                 </p>
-                                                <span className="mt-1.5 inline-block rounded-full bg-[#e0f7fa] px-2 py-0.5 text-[10px] font-semibold text-[#4bb1c8]">
-                                                    ● Tokens #1 to #25
+                                                <span className="mt-1.5 inline-block rounded-full bg-[#e0f7fa] px-2 py-0.5 text-[10px] font-semibold text-[#0f8fa8]">
+                                                    â— Tokens #1 to #25
                                                 </span>
                                             </div>
                                         </div>
@@ -447,22 +447,22 @@ export default function ReschedulePage() {
                                         onClick={() => handleInputChange("newSession", "evening")}
                                         className={`flex cursor-pointer items-start justify-between rounded-2xl border-2 p-4 transition sm:p-5 ${formData.newSession === "evening"
                                             ? "border-[#4bb1c8] bg-[#e0f7fa]/50 shadow-sm"
-                                            : "border-slate-200 bg-white hover:border-slate-300"
+                                            : "border-slate-200 bg-white hover:border-neutral-300"
                                             }`}
                                     >
                                         <div className="flex items-start gap-3">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e0f7fa] text-[#0f8fa8]">
                                                 <Sunset className="h-5 w-5" />
                                             </div>
                                             <div>
-                                                <h3 className="text-sm font-bold text-slate-900">
+                                                <h3 className="text-sm font-bold text-neutral-900">
                                                     Evening Session
                                                 </h3>
-                                                <p className="mt-0.5 text-xs font-bold text-slate-700">
-                                                    3:00 PM – 5:00 PM
+                                                <p className="mt-0.5 text-xs font-bold text-neutral-700">
+                                                    3:00 PM â€“ 5:00 PM
                                                 </p>
-                                                <span className="mt-1.5 inline-block rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
-                                                    ● Tokens #26 to #40
+                                                <span className="mt-1.5 inline-block rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-neutral-600">
+                                                    â— Tokens #26 to #40
                                                 </span>
                                             </div>
                                         </div>
@@ -480,7 +480,7 @@ export default function ReschedulePage() {
                                 <button
                                     type="button"
                                     onClick={() => setStep(2)}
-                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-slate-900"
+                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-600 hover:text-neutral-900"
                                 >
                                     <ArrowLeft className="h-4 w-4" /> Back
                                 </button>
@@ -488,7 +488,7 @@ export default function ReschedulePage() {
                                 <button
                                     type="button"
                                     onClick={handleConfirmReschedule}
-                                    className="inline-flex items-center gap-2 rounded-xl bg-[#4bb1c8] px-7 py-3 text-xs font-bold text-white shadow-md shadow-[#4bb1c8]/20 transition hover:bg-[#33b6d3]"
+                                    className="inline-flex items-center gap-2 rounded-xl bg-[#4bb1c8] px-7 py-3 text-xs font-bold text-white shadow-lg shadow-[#4bb1c8]/25 transition hover:bg-[#1d97b3]"
                                 >
                                     Confirm Reschedule{" "}
                                     <ArrowRight className="h-4 w-4" />
@@ -502,76 +502,76 @@ export default function ReschedulePage() {
                 {step === 4 && confirmedData && (
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                         {/* Left: Rescheduled Ticket */}
-                        <div className="lg:col-span-2 flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                        <div className="lg:col-span-2 flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_12px_40px_rgba(15,23,42,0.10)] sm:p-8">
                             <div>
-                                <div className="border-b border-slate-100 pb-5 text-center">
-                                    <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-[#e0f7fa] text-[#4bb1c8]">
+                                <div className="border-b border-neutral-300 pb-5 text-center">
+                                    <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-[#e0f7fa] text-[#0f8fa8]">
                                         <CheckCircle2 className="h-9 w-9" />
                                     </div>
-                                    <h2 className="text-2xl font-black text-slate-900">
+                                    <h2 className="text-2xl font-black text-neutral-900">
                                         Appointment Rescheduled!
                                     </h2>
-                                    <p className="mt-0.5 text-xs text-slate-500">
+                                    <p className="mt-0.5 text-xs text-neutral-600">
                                         Your appointment has been successfully updated at Sunrise
                                         Family Clinic.
                                     </p>
                                 </div>
 
-                                <div className="my-5 grid grid-cols-2 gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
+                                <div className="my-5 grid grid-cols-2 gap-4 rounded-2xl border border-slate-200 bg-white p-4 text-center">
                                     <div className="border-r border-slate-200 pr-2">
-                                        <span className="text-[11px] font-bold uppercase text-slate-500">
+                                        <span className="text-[11px] font-bold uppercase text-neutral-600">
                                             Ticket Number
                                         </span>
-                                        <div className="mt-1 font-mono text-lg font-black text-slate-900">
+                                        <div className="mt-1 font-mono text-lg font-black text-neutral-900">
                                             {confirmedData.ticketNumber}
                                         </div>
                                     </div>
                                     <div>
-                                        <span className="text-[11px] font-bold uppercase text-[#4bb1c8]">
+                                        <span className="text-[11px] font-bold uppercase text-[#0f8fa8]">
                                             New Token Number
                                         </span>
-                                        <div className="text-3xl font-black text-[#4bb1c8]">
+                                        <div className="text-3xl font-black text-[#0f8fa8]">
                                             #{confirmedData.newTokenNumber}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="space-y-2 text-xs text-slate-600">
-                                    <div className="flex justify-between border-b border-slate-100 py-1.5">
-                                        <span className="font-medium text-slate-400">
+                                <div className="space-y-2 text-xs text-neutral-600">
+                                    <div className="flex justify-between border-b border-neutral-300 py-1.5">
+                                        <span className="font-medium text-neutral-400">
                                             Patient Name
                                         </span>
-                                        <span className="font-bold text-slate-800">
+                                        <span className="font-bold text-neutral-700">
                                             {confirmedData.patientName}
                                         </span>
                                     </div>
-                                    <div className="flex justify-between border-b border-slate-100 py-1.5">
-                                        <span className="font-medium text-slate-400">Doctor</span>
-                                        <span className="font-bold text-slate-800">
+                                    <div className="flex justify-between border-b border-neutral-300 py-1.5">
+                                        <span className="font-medium text-neutral-400">Doctor</span>
+                                        <span className="font-bold text-neutral-700">
                                             {confirmedData.doctorName}
                                         </span>
                                     </div>
-                                    <div className="flex justify-between border-b border-slate-100 py-1.5">
-                                        <span className="font-medium text-slate-400">
+                                    <div className="flex justify-between border-b border-neutral-300 py-1.5">
+                                        <span className="font-medium text-neutral-400">
                                             New Date & Session
                                         </span>
-                                        <span className="font-bold text-[#4bb1c8]">
-                                            {confirmedData.newDate} • {confirmedData.sessionText}
+                                        <span className="font-bold text-[#0f8fa8]">
+                                            {confirmedData.newDate} â€¢ {confirmedData.sessionText}
                                         </span>
                                     </div>
-                                    <div className="flex justify-between border-b border-slate-100 py-1.5">
-                                        <span className="font-medium text-slate-400">
+                                    <div className="flex justify-between border-b border-neutral-300 py-1.5">
+                                        <span className="font-medium text-neutral-400">
                                             Payment Status
                                         </span>
-                                        <span className="font-bold text-slate-800">
+                                        <span className="font-bold text-neutral-700">
                                             Already Paid (No Extra Fee)
                                         </span>
                                     </div>
-                                    <div className="flex justify-between border-b border-slate-100 py-1.5">
-                                        <span className="font-medium text-slate-400">
+                                    <div className="flex justify-between border-b border-neutral-300 py-1.5">
+                                        <span className="font-medium text-neutral-400">
                                             SMS Confirmation Sent To
                                         </span>
-                                        <span className="font-bold text-slate-800">
+                                        <span className="font-bold text-neutral-700">
                                             +91 {formData.phone}
                                         </span>
                                     </div>
@@ -629,7 +629,7 @@ export default function ReschedulePage() {
                                     <div className="header center">
                                         <h1>SUNRISE FAMILY CLINIC</h1>
                                         <p>
-                                            Rescheduled Receipt • {confirmedData.smsTime}
+                                            Rescheduled Receipt â€¢ {confirmedData.smsTime}
                                         </p>
                                     </div>
 
@@ -657,7 +657,7 @@ export default function ReschedulePage() {
                                     <div className="row">
                                         <span className="label">New Date &amp; Session</span>
                                         <span className="value">
-                                            {confirmedData.newDate} • {confirmedData.sessionText}
+                                            {confirmedData.newDate} â€¢ {confirmedData.sessionText}
                                         </span>
                                     </div>
                                     <div className="row">
@@ -680,10 +680,10 @@ export default function ReschedulePage() {
                             </div>
 
                             {/* Actions */}
-                            <div className="mt-8 flex flex-col gap-3 border-t border-slate-100 pt-4 sm:flex-row">
+                            <div className="mt-8 flex flex-col gap-3 border-t border-neutral-300 pt-4 sm:flex-row">
                                 <button
                                     onClick={() => handlePrintReceipt()}
-                                    className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] py-3 text-xs font-bold text-white shadow-sm transition hover:bg-[#33b6d3]"
+                                    className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] py-3 text-xs font-bold text-white shadow-sm transition hover:bg-[#1d97b3]"
                                 >
                                     <Download className="h-4 w-4" /> Download / Print Updated
                                     Ticket
@@ -693,7 +693,7 @@ export default function ReschedulePage() {
                                         setStep(1);
                                         setOtp(["", "", "", "", "", ""]);
                                     }}
-                                    className="center rounded-xl border border-slate-200 px-4 py-3 text-center text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
+                                    className="center rounded-xl border border-slate-200 px-4 py-3 text-center text-xs font-semibold text-neutral-700 transition hover:bg-white"
                                 >
                                     Reschedule Another
                                 </button>
@@ -701,10 +701,10 @@ export default function ReschedulePage() {
                         </div>
 
                         {/* Right: Phone Mockup */}
-                        <div className="mx-auto flex max-w-xs w-full flex-col justify-between rounded-3xl border-4 border-slate-800 bg-slate-900 p-4 shadow-2xl">
-                            <div className="mb-3 flex justify-between items-center border-b border-slate-800 px-3 py-1 text-[10px] font-mono text-slate-400 pb-2">
+                        <div className="mx-auto flex max-w-xs w-full flex-col justify-between rounded-3xl border-4 border-neutral-800 bg-neutral-900 p-4 shadow-2xl">
+                            <div className="mb-3 flex justify-between items-center border-b border-neutral-800 px-3 py-1 text-[10px] font-mono text-neutral-400 pb-2">
                                 <span>{confirmedData.smsTime}</span>
-                                <span className="mx-auto h-3 w-10 rounded-full bg-slate-800"></span>
+                                <span className="mx-auto h-3 w-10 rounded-full bg-neutral-800"></span>
                                 <span>SMS 100%</span>
                             </div>
 
@@ -713,19 +713,19 @@ export default function ReschedulePage() {
                                     <div className="mx-auto mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-[#4bb1c8] text-xs font-bold text-white">
                                         SC
                                     </div>
-                                    <span className="block text-[11px] font-bold text-slate-200">
+                                    <span className="block text-[11px] font-bold text-neutral-200">
                                         Sunrise Clinic
                                     </span>
-                                    <span className="font-medium text-[9px] text-[#4bb1c8]">
+                                    <span className="font-medium text-[9px] text-[#0f8fa8]">
                                         SMS Delivered Just Now
                                     </span>
                                 </div>
 
-                                <div className="rounded-2xl rounded-tl-none border border-slate-700 bg-slate-800 p-3.5 text-xs leading-relaxed text-slate-100 shadow-md">
-                                    <p className="mb-1 font-semibold text-[#4bb1c8]">
+                                <div className="rounded-2xl rounded-tl-none border border-neutral-700 bg-neutral-800 p-3.5 text-xs leading-relaxed text-neutral-100 shadow-md">
+                                    <p className="mb-1 font-semibold text-[#0f8fa8]">
                                         Sunrise Clinic: Your appointment has been rescheduled.
                                     </p>
-                                    <div className="space-y-0.5 text-[11px] text-slate-300">
+                                    <div className="space-y-0.5 text-[11px] text-neutral-300">
                                         <p>
                                             <strong>Ticket:</strong> {confirmedData.ticketNumber}
                                         </p>
@@ -735,20 +735,20 @@ export default function ReschedulePage() {
                                         <p>
                                             <strong>Session: </strong>
                                             {formData.newSession === "morning"
-                                                ? "9 AM–2 PM"
-                                                : "3 PM–5 PM"}
+                                                ? "9 AMâ€“2 PM"
+                                                : "3 PMâ€“5 PM"}
                                         </p>
                                         <p>
                                             <strong>Token:</strong> #{confirmedData.newTokenNumber}
                                         </p>
                                     </div>
-                                    <p className="mt-2 text-[10px] font-medium text-[#4bb1c8]">
+                                    <p className="mt-2 text-[10px] font-medium text-[#0f8fa8]">
                                         Thank you!
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-slate-700"></div>
+                            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-neutral-700"></div>
                         </div>
                     </div>
                 )}
