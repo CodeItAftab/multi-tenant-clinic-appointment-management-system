@@ -37,6 +37,20 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close the mobile menu automatically if the viewport grows past the
+  // lg breakpoint (e.g. rotating a tablet, resizing a browser window),
+  // so it never stays open behind the desktop nav.
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenu(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <nav
       className={`sticky top-0 z-30 w-full bg-white transition-shadow duration-300 ${isScrolled
@@ -45,7 +59,7 @@ function Navbar() {
         }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="flex h-22 items-center justify-between">
+        <div className="flex h-[88px] items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 sm:gap-4">
             <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-[#e0f7fa] ring-1 ring-[#b2ebf2] shadow-sm">
@@ -82,45 +96,63 @@ function Navbar() {
             ))}
           </div>
 
-          <div>
+          {/* Right side: language selector + mobile menu toggle */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <LanguageSelector />
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenu((prev) => !prev)}
+              aria-label={mobileMenu ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenu}
+              aria-controls="mobile-nav-menu"
+              className="flex h-10 w-10 items-center justify-center rounded-xl text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] lg:hidden"
+            >
+              {mobileMenu ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
+        </div>
 
-          {/* Mobile Menu */}
-          {mobileMenu && (
-            <div className="animate-in fade-in slide-in-from-top-2 border-t border-gray-100 py-4 duration-200 lg:hidden">
-              <div className="flex flex-col gap-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMobileMenu(false)}
-                    className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8]"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+        {/* Mobile Menu — rendered below the header row, not inside it,
+            so it appears as a full-width panel instead of being squeezed
+            into the fixed-height header bar. */}
+        {mobileMenu && (
+          <div
+            id="mobile-nav-menu"
+            className="animate-in fade-in slide-in-from-top-2 border-t border-gray-100 py-4 duration-200 lg:hidden"
+          >
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenu(false)}
+                  className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8]"
+                >
+                  {link.name}
+                </Link>
+              ))}
 
-                {/* Language selector (mobile) */}
-                <div className="relative mt-2 px-4">
-                  <select
-                    value={language}
-                    onChange={(e) => handleLanguageChange(e.target.value)}
-                    className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa]"
-                  >
-                    <option value="English">English</option>
-                    <option value="Hindi">हिंदी</option>
-                  </select>
+              {/* Language selector (mobile) */}
+              <div className="relative mt-2 px-4">
+                <select
+                  value={language}
+                  onChange={(e) => handleLanguageChange(e.target.value)}
+                  className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa]"
+                >
+                  <option value="English">English</option>
+                  <option value="Hindi">हिंदी</option>
+                </select>
 
-                  <ChevronDown
-                    size={14}
-                    className="pointer-events-none absolute right-7 top-1/2 -translate-y-1/2 text-gray-500"
-                  />
-                </div>
+                <ChevronDown
+                  size={14}
+                  className="pointer-events-none absolute right-7 top-1/2 -translate-y-1/2 text-gray-500"
+                />
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </nav>
   );
