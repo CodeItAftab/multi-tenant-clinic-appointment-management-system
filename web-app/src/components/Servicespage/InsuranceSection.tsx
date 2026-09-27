@@ -21,7 +21,7 @@ function InsuranceSection() {
         {insurancePartners.map((name) => (
           <span
             key={name}
-            className="rounded-xl border border-slate-200 bg-white px-5 py-3 text-[13px] font-semibold text-slate-600 shadow-sm"
+            className="rounded-xl border border-slate-200 bg-white px-5 py-3 text-[13px] font-semibold text-slate-600 shadow-sm transition-all duration-300 ease-out hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md cursor-default"
           >
             {name}
           </span>

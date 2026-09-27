@@ -29,13 +29,13 @@ function Story() {
           </div>
 
           {/* Right stats card */}
-          <div className="relative mx-auto w-full max-w-md rounded-2xl bg-linear-to-br from-[#e0f7fa] to-[#b2ebf2]/40 p-5 shadow-sm ring-1 ring-[#b2ebf2] sm:p-6">
+          <div className="group relative mx-auto w-full max-w-md rounded-2xl bg-linear-to-br from-[#e0f7fa] to-[#b2ebf2]/40 p-5 shadow-sm ring-1 ring-[#b2ebf2] hover:ring-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20 transition-all duration-300 ease-out sm:p-6">
             <div className="pointer-events-none absolute -right-4 -top-4 h-20 w-20 rounded-full bg-[#b2ebf2]/30 blur-2xl" />
 
             <div className="relative grid grid-cols-2 gap-x-5 gap-y-6 text-center">
               <div>
-                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2]">
-                  <Clock size={14} className="text-[#4bb1c8]" />
+                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:ring-[#4bb1c8] group-hover:shadow-sm">
+                  <Clock size={14} className="text-[#4bb1c8] transition-colors duration-300 ease-out group-hover:text-white" />
                 </div>
 
                 <p className="mt-2 text-[24px] font-bold text-[#4bb1c8] sm:text-[28px]">
@@ -48,8 +48,8 @@ function Story() {
               </div>
 
               <div>
-                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2]">
-                  <Stethoscope size={14} className="text-[#4bb1c8]" />
+                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:ring-[#4bb1c8] group-hover:shadow-sm">
+                  <Stethoscope size={14} className="text-[#4bb1c8] transition-colors duration-300 ease-out group-hover:text-white" />
                 </div>
 
                 <p className="mt-2 text-[24px] font-bold text-[#4bb1c8] sm:text-[28px]">
@@ -62,8 +62,8 @@ function Story() {
               </div>
 
               <div>
-                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2]">
-                  <Users size={14} className="text-[#4bb1c8]" />
+                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:ring-[#4bb1c8] group-hover:shadow-sm">
+                  <Users size={14} className="text-[#4bb1c8] transition-colors duration-300 ease-out group-hover:text-white" />
                 </div>
 
                 <p className="mt-2 text-[24px] font-bold text-[#4bb1c8] sm:text-[28px]">
@@ -76,8 +76,8 @@ function Story() {
               </div>
 
               <div>
-                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2]">
-                  <Building2 size={14} className="text-[#4bb1c8]" />
+                <div className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-white ring-1 ring-[#b2ebf2] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:ring-[#4bb1c8] group-hover:shadow-sm">
+                  <Building2 size={14} className="text-[#4bb1c8] transition-colors duration-300 ease-out group-hover:text-white" />
                 </div>
 
                 <p className="mt-2 text-[24px] font-bold text-[#4bb1c8] sm:text-[28px]">

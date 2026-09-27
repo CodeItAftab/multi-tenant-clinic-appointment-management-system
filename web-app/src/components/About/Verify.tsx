@@ -18,11 +18,11 @@ function Verify() {
                     <div className="relative mt-14 grid gap-10 sm:grid-cols-3">
                         <div className="absolute left-[16.5%] right-[16.5%] top-8 hidden h-px bg-[#b2ebf2] sm:block" />
 
-                        <div className="relative">
-                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white">
-                                <FileText size={24} className="text-[#4bb1c8]" />
+                        <div className="group relative">
+                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out group-hover:border-[#4bb1c8] group-hover:bg-[#e0f7fa] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20 group-hover:scale-105">
+                                <FileText size={24} className="text-[#4bb1c8] transition-transform duration-300 ease-out group-hover:scale-110" />
                             </div>
-                            <h3 className="mt-5 text-[16px] font-bold text-[#282828] sm:text-[18px]">
+                            <h3 className="mt-5 text-[16px] font-bold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[18px]">
                                 1. Document Collection
                             </h3>
                             <p className="mx-auto mt-2.5 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-[14px]">
@@ -31,11 +31,11 @@ function Verify() {
                             </p>
                         </div>
 
-                        <div className="relative">
-                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white">
-                                <Stethoscope size={24} className="text-[#4bb1c8]" />
+                        <div className="group relative">
+                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out group-hover:border-[#4bb1c8] group-hover:bg-[#e0f7fa] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20 group-hover:scale-105">
+                                <Stethoscope size={24} className="text-[#4bb1c8] transition-transform duration-300 ease-out group-hover:scale-110" />
                             </div>
-                            <h3 className="mt-5 text-[16px] font-bold text-[#282828] sm:text-[18px]">
+                            <h3 className="mt-5 text-[16px] font-bold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[18px]">
                                 2. Medical Council Check
                             </h3>
                             <p className="mx-auto mt-2.5 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-[14px]">
@@ -44,11 +44,11 @@ function Verify() {
                             </p>
                         </div>
 
-                        <div className="relative">
-                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white">
-                                <BadgeCheck size={24} className="text-[#4bb1c8]" />
+                        <div className="group relative">
+                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out group-hover:border-[#4bb1c8] group-hover:bg-[#e0f7fa] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20 group-hover:scale-105">
+                                <BadgeCheck size={24} className="text-[#4bb1c8] transition-transform duration-300 ease-out group-hover:scale-110" />
                             </div>
-                            <h3 className="mt-5 text-[16px] font-bold text-[#282828] sm:text-[18px]">
+                            <h3 className="mt-5 text-[16px] font-bold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[18px]">
                                 3. Final Approval
                             </h3>
                             <p className="mx-auto mt-2.5 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-[14px]">

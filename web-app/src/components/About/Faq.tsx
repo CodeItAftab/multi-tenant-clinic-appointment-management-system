@@ -46,7 +46,7 @@ function Faq() {
           {faqs.map((faq, index) => (
             <div
               key={faq.question}
-              className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
+              className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
             >
               <button
                 type="button"

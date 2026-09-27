@@ -20,30 +20,39 @@ function TestimonialsSection() {
                     {testimonials.map((t) => (
                         <article
                             key={t.name}
-                            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7"
+                            className="rating-card group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20 sm:p-7 flex flex-col justify-between"
+                            style={{
+                                transition:
+                                    "box-shadow 300ms ease-out, border-color 300ms ease-out",
+                            }}
                         >
-                            <div className="flex items-center gap-1">
-                                {Array.from({ length: 5 }).map((_, i) => (
-                                    <Star
-                                        key={i}
-                                        size={15}
-                                        className={
-                                            i < t.rating ? "fill-amber-400 text-amber-400" : "text-slate-200"
-                                        }
-                                    />
-                                ))}
+                            {/* Soft glow sweep on hover */}
+                            <div className="pointer-events-none absolute -inset-px rounded-2xl bg-linear-to-b from-[#e0f7fa]/0 via-[#e0f7fa]/0 to-[#e0f7fa]/40 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+
+                            <div>
+                                <div className="flex items-center gap-1">
+                                    {Array.from({ length: 5 }).map((_, i) => (
+                                        <Star
+                                            key={i}
+                                            size={15}
+                                            className={
+                                                i < t.rating ? "fill-amber-400 text-amber-400" : "text-slate-200"
+                                            }
+                                        />
+                                    ))}
+                                </div>
+
+                                <p className="mt-4 text-[13px] leading-relaxed text-slate-600 sm:text-[14px]">
+                                    &quot;{t.quote}&quot;
+                                </p>
                             </div>
 
-                            <p className="mt-4 text-[13px] leading-relaxed text-slate-600 sm:text-[14px]">
-                                &quot;{t.quote}&quot;
-                            </p>
-
                             <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
-                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e0f7fa] text-[13px] font-bold text-[#4bb1c8]">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#e0f7fa] text-[13px] font-bold text-[#4bb1c8] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:text-white group-hover:shadow-sm">
                                     {t.name.charAt(0)}
                                 </div>
                                 <div>
-                                    <p className="text-[13px] font-bold text-slate-900">{t.name}</p>
+                                    <p className="text-[13px] font-bold text-slate-900 transition-colors duration-300 ease-out group-hover:text-[#0f8fa8]">{t.name}</p>
                                     <p className="text-[12px] text-slate-500">{t.role}</p>
                                 </div>
                             </div>

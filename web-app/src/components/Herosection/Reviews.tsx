@@ -1,17 +1,16 @@
-"use client"
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import {
   Star,
   Quote,
   CheckCircle2,
   HeartHandshake,
   ArrowRight,
-  X
 } from "lucide-react";
 import Link from "next/link";
 import ReviewModal from "./ReviewModals";
-import Booking from "../Forms/Booking";
+import BookingModal from "../Forms/BookingModal";
 
 // Review item interface
 interface Review {
@@ -137,10 +136,17 @@ export default function Reviews() {
           {displayedReviews.map((review) => (
             <div
               key={review.id}
-              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-[0_12px_40px_rgb(0,0,0,0.1)] hover:border-[#b2ebf2] transition-all duration-200 flex flex-col justify-between relative group"
+              className="rating-card group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20 flex flex-col justify-between"
+              style={{
+                transition:
+                  "box-shadow 300ms ease-out, border-color 300ms ease-out",
+              }}
             >
+              {/* Soft glow sweep on hover */}
+              <div className="pointer-events-none absolute -inset-px rounded-2xl bg-linear-to-b from-[#e0f7fa]/0 via-[#e0f7fa]/0 to-[#e0f7fa]/40 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+
               {/* Quote Watermark Icon */}
-              <Quote className="absolute top-4 right-4 w-7 h-7 text-slate-100 group-hover:text-[#b2ebf2] transition-colors pointer-events-none" />
+              <Quote className="absolute top-4 right-4 w-7 h-7 text-slate-100 transition-colors duration-300 ease-out group-hover:text-[#b2ebf2] pointer-events-none" />
 
               <div>
                 {/* Rating Stars & Feature Tag */}
@@ -153,7 +159,7 @@ export default function Reviews() {
                 </div>
 
                 {/* Review Headline & Body */}
-                <h3 className="font-bold text-slate-900 text-sm mb-2 group-hover:text-[#4bb1c8] transition-colors line-clamp-2">
+                <h3 className="font-bold text-slate-900 text-sm mb-2 transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] line-clamp-2">
                   "{review.title}"
                 </h3>
                 <p className="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-4">
@@ -166,7 +172,7 @@ export default function Reviews() {
                 <img
                   src={review.avatar}
                   alt={review.authorName}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-[#e0f7fa]"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-[#e0f7fa] transition-all duration-300 ease-out group-hover:border-[#4bb1c8]/60 group-hover:shadow-sm"
                 />
                 <div>
                   <div className="flex items-center gap-1 font-bold text-slate-900 text-xs">
@@ -188,10 +194,10 @@ export default function Reviews() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/reviews"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
+            className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
           >
             View All Reviews
-            <ArrowRight size={16} />
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
@@ -218,7 +224,7 @@ export default function Reviews() {
             <div className="mt-6 flex w-full flex-col items-stretch gap-3 sm:mt-7 sm:w-auto sm:flex-row sm:items-center sm:justify-center md:justify-start">
               <button
                 onClick={() => setBookingOpen(true)}
-                className="inline-flex items-center justify-center gap-2 bg-[#4bb1c8] hover:bg-[#33b6d3] text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-[#4bb1c8]/30 transition text-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-6 py-3.5 text-sm font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
               >
                 📅 Book Appointment
               </button>
@@ -226,7 +232,7 @@ export default function Reviews() {
               <button
                 type="button"
                 onClick={() => setReviewOpen(true)}
-                className="inline-flex items-center justify-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3.5 rounded-xl transition text-sm"
+                className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/5 hover:bg-white/10 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 ease-out hover:scale-[1.02] active:scale-98 cursor-pointer"
               >
                 Leave a Review
               </button>
@@ -236,41 +242,11 @@ export default function Reviews() {
 
       </div>
 
-      {/* ================= PORTAL-BASED BOOKING MODAL ================= */}
-      {bookingOpen && mounted && createPortal(
-        <div className="fixed inset-0 z-9999 flex items-center justify-center p-4 sm:p-6 text-left">
-          {/* Dark Backdrop */}
-          <div
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
-            onClick={() => setBookingOpen(false)}
-            aria-hidden="true"
-          />
-
-          {/* Modal Container */}
-          <div className="relative z-10000 w-full max-w-3xl max-h-[85vh] flex flex-col bg-white rounded-2xl shadow-2xl overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-200">
-            
-            {/* Dedicated Header Bar with Close Button */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white sticky top-0 z-50">
-              <h3 className="text-base font-bold text-slate-900">
-                Book Your Appointment
-              </h3>
-              <button
-                onClick={() => setBookingOpen(false)}
-                aria-label="Close booking form"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-[#4bb1c8]"
-              >
-                <X className="h-5 w-5" strokeWidth={2.5} />
-              </button>
-            </div>
-
-            {/* Scrollable Form Area */}
-            <div className="overflow-y-auto p-4 sm:p-6">
-              <Booking />
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
+      {/* ================= BOOKING MODAL ================= */}
+      <BookingModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+      />
 
       {/* ================= REVIEW POPUP ================= */}
       <ReviewModal

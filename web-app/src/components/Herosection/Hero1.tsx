@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Calendar, ArrowRight, X } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { useState } from "react";
-import Booking from "../Forms/Booking";
+import BookingModal from "../Forms/BookingModal";
 
 const Hero1 = () => {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -42,14 +42,14 @@ const Hero1 = () => {
               <button
                 type="button"
                 onClick={() => setBookingOpen(true)}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] px-5 py-3 text-[14px] font-semibold text-white shadow-lg shadow-[#4bb1c8]/25 transition-all duration-200 hover:bg-[#1d97b3] active:bg-[#1aa3bf] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2 sm:w-auto sm:px-6 sm:text-[16px]"
+                className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-6 py-3.5 text-sm sm:text-base font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer sm:w-auto"
               >
                 <Calendar size={18} strokeWidth={2.5} />
                 Book Appointment
               </button>
               <Link
                 href="/doctors"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#4bb1c8] bg-white/85 px-5 py-3 text-[14px] font-medium text-neutral-700 backdrop-blur-sm transition-all duration-200 hover:border-[#b2ebf2] hover:bg-white hover:text-[#4bb1c8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2 sm:w-auto sm:px-6 sm:text-[16px]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/90 px-6 py-3.5 text-sm sm:text-base font-bold text-slate-700 shadow-xs backdrop-blur-sm hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer sm:w-auto"
               >
                 Meet our doctors <ArrowRight size={17} strokeWidth={2} />
               </Link>
@@ -65,26 +65,10 @@ const Hero1 = () => {
       </div>
 
       {/* ===== BOOKING MODAL ===== */}
-      {bookingOpen && (
-        <div
-          className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/50 backdrop-blur-sm"
-          onClick={(e) => { if (e.target === e.currentTarget) setBookingOpen(false); }}
-        >
-          <div className="flex min-h-full items-start justify-center px-4 py-8 sm:py-12">
-            <div className="relative w-full max-w-3xl">
-              {/* X Close button */}
-              <button
-                onClick={() => setBookingOpen(false)}
-                aria-label="Close booking form"
-                className="absolute -top-3 -right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white border border-slate-200 shadow-lg text-neutral-500 hover:text-neutral-900 hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8]"
-              >
-                <X className="h-4 w-4" strokeWidth={2.5} />
-              </button>
-              <Booking />
-            </div>
-          </div>
-        </div>
-      )}
+      <BookingModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+      />
     </section>
   );
 };

@@ -28,7 +28,7 @@ function TimingsSection() {
             <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch lg:gap-7">
                 <div className="flex flex-col gap-5 lg:h-full">
                     {/* Weekly Schedule */}
-                    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/15 transition-all duration-300 ease-out">
                         <div className="flex items-center gap-2.5 border-b border-slate-100 bg-slate-50 px-5 py-3.5 sm:px-6">
                             <CalendarClock size={17} className="text-[#4bb1c8]" />
 
@@ -80,14 +80,21 @@ function TimingsSection() {
                                 return (
                                     <article
                                         key={item.title}
-                                        className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                                        className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm hover:border-[#4bb1c8] hover:shadow-md hover:shadow-[#4bb1c8]/20"
+                                        style={{
+                                            transition:
+                                                "box-shadow 300ms ease-out, border-color 300ms ease-out",
+                                        }}
                                     >
-                                        <div className="flex items-start justify-between gap-2">
-                                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#e0f7fa] ring-1 ring-[#b2ebf2]">
+                                        {/* Soft glow sweep on hover */}
+                                        <div className="pointer-events-none absolute -inset-px rounded-xl bg-linear-to-b from-[#e0f7fa]/0 via-[#e0f7fa]/0 to-[#e0f7fa]/35 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+
+                                        <div className="relative flex items-start justify-between gap-2">
+                                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#e0f7fa] ring-1 ring-[#b2ebf2] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:ring-[#4bb1c8] group-hover:shadow-sm">
                                                 <Icon
                                                     size={14}
                                                     strokeWidth={1.9}
-                                                    className="text-[#4bb1c8]"
+                                                    className="text-[#4bb1c8] transition-colors duration-300 ease-out group-hover:text-white"
                                                 />
                                             </div>
 
@@ -98,15 +105,15 @@ function TimingsSection() {
                                             )}
                                         </div>
 
-                                        <h3 className="mt-2.5 text-[13px] font-bold leading-snug text-slate-900 sm:text-[13.5px]">
+                                        <h3 className="relative mt-2.5 text-[13px] font-bold leading-snug text-slate-900 transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[13.5px]">
                                             {item.title}
                                         </h3>
 
-                                        <p className="mt-1 text-[12px] font-bold text-[#4bb1c8]">
+                                        <p className="relative mt-1 text-[12px] font-bold text-[#4bb1c8]">
                                             {item.hours}
                                         </p>
 
-                                        <p className="mt-1.5 text-[11px] leading-relaxed text-slate-500">
+                                        <p className="relative mt-1.5 text-[11px] leading-relaxed text-slate-500">
                                             {item.note}
                                         </p>
                                     </article>

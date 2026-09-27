@@ -74,14 +74,14 @@ function HeroSection() {
                         href={locationInfo.mapDirectionsUrl}
                         rel="noopener noreferrer"
                         target="_blank"
-                        className="inline-flex items-center gap-2 rounded-full bg-[#4bb1c8] px-6 py-3 text-[13px] font-bold text-white shadow-sm transition-all duration-300 hover:bg-[#33b6d3]"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-7 py-3 text-[13px] sm:text-sm font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
                     >
                         <MapPin size={15} />
                         Get Directions
                     </a>
                     <a
                         href={locationInfo.phoneHref}
-                        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-[13px] font-bold text-slate-700 transition-all duration-300 hover:border-[#b2ebf2] hover:text-[#4bb1c8]"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3 text-[13px] sm:text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
                     >
                         Call Reception
                     </a>

@@ -21,8 +21,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "HSM",
-  description: "Healthcare Management System",
+  title: "HMS",
+  description: "Hospital Management System",
 };
 
 export default function RootLayout({

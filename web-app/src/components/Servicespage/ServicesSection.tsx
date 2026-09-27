@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import { services, categories } from "../../utils/servicesData";
 import ServiceCard from "./ServiceCard";
+import BookingModal from "../Forms/BookingModal";
 
 type ServicesSectionProps = {
   searchTerm: string;
@@ -21,6 +22,7 @@ function ServicesSection({
   setActiveCategory,
 }: ServicesSectionProps) {
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   // Reset to 3 lines (12 cards) when filter or search changes
   useEffect(() => {
@@ -96,7 +98,7 @@ function ServicesSection({
                 setSearchTerm("");
                 setActiveCategory("All");
               }}
-              className="mt-4 rounded-full bg-[#4bb1c8] px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#33b6d3]"
+              className="mt-4 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-5 py-2.5 text-[13px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
             >
               Clear filters
             </button>
@@ -105,7 +107,11 @@ function ServicesSection({
           <>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 lg:grid-cols-4">
               {displayedServices.map((service) => (
-                <ServiceCard key={service.title} service={service} />
+                <ServiceCard
+                  key={service.title}
+                  service={service}
+                  onBook={() => setBookingOpen(true)}
+                />
               ))}
             </div>
 
@@ -115,7 +121,7 @@ function ServicesSection({
                 <button
                   type="button"
                   onClick={() => setVisibleCount((prev) => prev + 12)}
-                  className="group inline-flex items-center gap-2 rounded-xl bg-[#4bb1c8] px-6 py-3 text-[14px] font-semibold text-white shadow-md shadow-[#4bb1c8]/25 transition-all duration-300 hover:bg-[#1d97b3] hover:shadow-lg hover:shadow-[#4bb1c8]/35 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8]"
+                  className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none"
                 >
                   <span>Show More Services</span>
                   <ChevronDown
@@ -128,6 +134,12 @@ function ServicesSection({
           </>
         )}
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={bookingOpen}
+        onClose={() => setBookingOpen(false)}
+      />
     </section>
   );
 }

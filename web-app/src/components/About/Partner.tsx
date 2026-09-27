@@ -28,7 +28,7 @@ function Partner() {
               </p>
             </div>
 
-            <button className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#4bb1c8] px-6 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-[#33b6d3]">
+            <button className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-6 py-3 text-[14px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer">
               Partner With Us
               <ArrowRight size={16} />
             </button>
@@ -49,7 +49,7 @@ function Partner() {
                 <Mail size={15} className="text-[#4bb1c8]" />
               </div>
               <span className="text-[13px] text-gray-600 sm:text-[14px]">
-                support@hms.in
+                hms@care.exampe
               </span>
             </div>
 
@@ -58,7 +58,7 @@ function Partner() {
                 <MapPin size={15} className="text-[#4bb1c8]" />
               </div>
               <span className="text-[13px] text-gray-600 sm:text-[14px]">
-                Bihar, India
+                Dehri-on-sone, Rohtas, Bihar 821308
               </span>
             </div>
           </div>

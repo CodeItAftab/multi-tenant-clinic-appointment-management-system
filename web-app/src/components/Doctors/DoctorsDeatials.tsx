@@ -14,6 +14,7 @@ import {
 import { doctors, Doctor } from "@/utils/doctorsData";
 import Link from "next/link";
 import DoctorDetailsModal from "./DoctorDetailsModal";
+import BookingModal from "../Forms/BookingModal";
 
 const INITIAL_VISIBLE_COUNT = 12; // 3 lines in 4-column grid (3 rows x 4 cols = 12 cards)
 
@@ -21,6 +22,7 @@ function DoctorsDeatials() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedSpecialty, setSelectedSpecialty] = useState("All");
   const [activeDoctor, setActiveDoctor] = useState<Doctor | null>(null);
+  const [bookingDoctor, setBookingDoctor] = useState<Doctor | null>(null);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
   // Reset to 3 lines (12 cards) when search or specialty changes
@@ -182,7 +184,7 @@ function DoctorsDeatials() {
             <button
               type="button"
               onClick={clearFilters}
-              className="mt-4 rounded-xl bg-[#4bb1c8] px-4 py-2 text-[12px] font-bold text-white shadow-sm transition-all hover:bg-[#33b6d3] hover:shadow-md"
+              className="mt-4 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-5 py-2.5 text-[12px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
             >
               Reset Filters
             </button>
@@ -191,81 +193,90 @@ function DoctorsDeatials() {
           <>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {displayedDoctors.map((doctor) => (
-                <div
-                  key={doctor.id}
-                  className="reveal-on-scroll reveal-fade-up group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-[0_8px_25px_rgb(0,0,0,0.08)]"
-                >
-                  <div className="p-4">
-                    <div className="flex items-start gap-3.5">
-                      <div className="shrink-0">
-                        <div className="h-16 w-16 overflow-hidden rounded-full ring-2 ring-[#e0f7fa] ring-offset-2 shadow-sm">
-                          <img
-                            src={doctor.image}
-                            alt={doctor.name}
-                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
-                          />
+                <div key={doctor.id} className="reveal-on-scroll reveal-fade-up">
+                  <div
+                    className="doctor-card group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20"
+                    style={{
+                      transition:
+                        "box-shadow 300ms ease-out, border-color 300ms ease-out",
+                    }}
+                  >
+                    {/* Soft glow sweep on hover */}
+                    <div className="pointer-events-none absolute -inset-px rounded-xl bg-linear-to-b from-[#e0f7fa]/0 via-[#e0f7fa]/0 to-[#e0f7fa]/40 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+
+                    <div className="relative p-4">
+                      <div className="flex items-start gap-3.5">
+                        <div className="shrink-0">
+                          <div className="h-16 w-16 overflow-hidden rounded-full ring-2 ring-[#e0f7fa] ring-offset-2 shadow-sm transition-all duration-300 ease-out group-hover:ring-[#4bb1c8]/60 group-hover:shadow-md">
+                            <img
+                              src={doctor.image}
+                              alt={doctor.name}
+                              className="h-full w-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-110"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="min-w-0 flex-1 pt-0.5">
+                          <h3 className="truncate text-[14px] font-extrabold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8]">
+                            {doctor.name}
+                          </h3>
+                          <p className="truncate text-[12px] font-bold text-[#4bb1c8]">
+                            {doctor.specialty}
+                          </p>
                         </div>
                       </div>
 
-                      <div className="min-w-0 flex-1 pt-0.5">
-                        <h3 className="truncate text-[14px] font-extrabold text-[#282828]">
-                          {doctor.name}
-                        </h3>
-                        <p className="truncate text-[12px] font-bold text-[#4bb1c8]">
-                          {doctor.specialty}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 flex flex-col items-center text-center">
-                      <div className="flex items-center gap-1.5 rounded-lg bg-[#e0f7fa] px-2.5 py-1 shadow-sm">
-                        <Star
-                          size={12}
-                          className="fill-[#4bb1c8] text-[#4bb1c8]"
-                        />
-                        <span className="text-[12px] font-bold text-[#1aa3bf]">
-                          {doctor.rating}
-                        </span>
-                      </div>
-
-                      <div className="mt-3 w-full space-y-2">
-                        <div className="flex items-center justify-center gap-2 text-[12px] text-gray-600">
-                          <GraduationCap
-                            size={14}
-                            className="shrink-0 text-gray-400"
+                      <div className="mt-4 flex flex-col items-center text-center">
+                        <div className="flex items-center gap-1.5 rounded-lg bg-[#e0f7fa] px-2.5 py-1 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20">
+                          <Star
+                            size={12}
+                            className="fill-[#4bb1c8] text-[#4bb1c8]"
                           />
-                          <span className="truncate font-semibold">
-                            {doctor.qualification}
+                          <span className="text-[12px] font-bold text-[#1aa3bf]">
+                            {doctor.rating}
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-center gap-2 text-[12px] text-gray-600">
-                          <Stethoscope
-                            size={14}
-                            className="shrink-0 text-gray-400"
-                          />
-                          <span className="truncate font-semibold">
-                            {doctor.experience}
-                          </span>
+                        <div className="mt-3 w-full space-y-2">
+                          <div className="flex items-center justify-center gap-2 text-[12px] text-gray-600">
+                            <GraduationCap
+                              size={14}
+                              className="shrink-0 text-gray-400"
+                            />
+                            <span className="truncate font-semibold">
+                              {doctor.qualification}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center justify-center gap-2 text-[12px] text-gray-600">
+                            <Stethoscope
+                              size={14}
+                              className="shrink-0 text-gray-400"
+                            />
+                            <span className="truncate font-semibold">
+                              {doctor.experience}
+                            </span>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="mt-4 flex w-full flex-col gap-2">
-                        <Link
-                          href="/booking"
-                          className="flex items-center justify-center gap-1.5 rounded-lg bg-[#4bb1c8] py-2 text-[12px] font-bold text-white shadow-sm transition-all hover:bg-[#33b6d3] hover:shadow-md"
-                        >
-                          <Calendar size={13} />
-                          Book Appointment
-                        </Link>
+                        <div className="mt-4 flex w-full flex-col gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setBookingDoctor(doctor)}
+                            className="flex items-center justify-center gap-1.5 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] py-2.5 text-[12px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none"
+                          >
+                            <Calendar size={13} />
+                            Book Appointment
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={() => setActiveDoctor(doctor)}
-                          className="flex justify-center rounded-lg border border-gray-200 py-2 text-[12px] font-bold text-[#282828] transition-all hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/40 hover:text-[#4bb1c8]"
-                        >
-                          View Details
-                        </button>
+                          <button
+                            type="button"
+                            onClick={() => setActiveDoctor(doctor)}
+                            className="flex justify-center items-center rounded-xl border border-slate-200 bg-white py-2.5 text-[12px] font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none"
+                          >
+                            View Details
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -279,7 +290,7 @@ function DoctorsDeatials() {
                 <button
                   type="button"
                   onClick={() => setVisibleCount((prev) => prev + 12)}
-                  className="group inline-flex items-center gap-2 rounded-xl bg-[#4bb1c8] px-6 py-3 text-[14px] font-semibold text-white shadow-md shadow-[#4bb1c8]/25 transition-all duration-300 hover:bg-[#1d97b3] hover:shadow-lg hover:shadow-[#4bb1c8]/35 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8]"
+                  className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none"
                 >
                   <span>Show More Doctors</span>
                   <ChevronDown
@@ -297,8 +308,19 @@ function DoctorsDeatials() {
         <DoctorDetailsModal
           doctor={activeDoctor}
           onClose={() => setActiveDoctor(null)}
+          onBookAppointment={(doc) => {
+            setActiveDoctor(null);
+            setBookingDoctor(doc);
+          }}
         />
       )}
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={Boolean(bookingDoctor)}
+        onClose={() => setBookingDoctor(null)}
+        preselectedDoctor={bookingDoctor}
+      />
     </div>
   );
 }
