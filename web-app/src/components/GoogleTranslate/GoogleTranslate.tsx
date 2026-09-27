@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import {
+  changeGoogleTranslateLanguage,
+  SupportedLanguage,
+} from "@/utils/googleTranslate";
 
 declare global {
   interface Window {
@@ -47,32 +51,24 @@ export default function GoogleTranslate() {
   return (
     <div
       id="google_translate_element"
-      style={{ display: "none", visibility: "hidden" }}
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        left: "-9999px",
+        top: "-9999px",
+        width: "1px",
+        height: "1px",
+        overflow: "hidden",
+        opacity: 0,
+        pointerEvents: "none",
+      }}
     />
   );
 }
 
 /**
  * High-speed language switching utility function.
- * Call this from your custom Navbar or Language Switcher component.
  */
-export function changeLanguage(langCode: "en" | "hi") {
-  const currentHost = window.location.hostname;
-  
-  // Set translation cookies across current host & top-level domain for fast cookie lookup
-  document.cookie = `googtrans=/en/${langCode}; path=/; domain=${currentHost}`;
-  document.cookie = `googtrans=/en/${langCode}; path=/;`;
-
-  const selectElement = document.querySelector<HTMLSelectElement>(
-    "#google_translate_element select"
-  );
-
-  if (selectElement) {
-    selectElement.value = langCode;
-    // Dispatch events to trigger Google's internal observer
-    selectElement.dispatchEvent(new Event("change", { bubbles: true }));
-  } else {
-    // Fallback: reload page if Google script hasn't mounted into DOM yet
-    window.location.reload();
-  }
+export function changeLanguage(langCode: SupportedLanguage) {
+  changeGoogleTranslateLanguage(langCode);
 }

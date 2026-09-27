@@ -210,7 +210,7 @@ function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-gray-700">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-center sm:flex-row sm:px-6 sm:text-left lg:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 pt-5 pb-20 sm:pb-5 text-center sm:flex-row sm:px-6 sm:text-left lg:px-10">
           <p className="text-[12px] text-gray-500">
             © {new Date().getFullYear()} HMS. All rights reserved.
           </p>

@@ -5,6 +5,9 @@ import Navbar from "../components/Navbar/Navbar";
 import GoogleTranslate from "../components/GoogleTranslate/GoogleTranslate";
 import Footer from "@/components/Footer/Footer";
 import MobileBottomNav from "@/components/Navbar/MobileBottomNav";
+import SmoothScroll from "@/components/ui/Scroll/SmoothScroll";
+import { ScrollRevealProvider } from "@/components/ui/Scroll/ScrollReveal";
+import ScrollToTop from "@/components/ui/Scroll/ScrollToTop";
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
@@ -33,9 +36,12 @@ export default function RootLayout({
       className={`${roboto.variable} ${poppins.variable} h-full antialiased`}
     >
       <body>
+        <SmoothScroll />
+        <ScrollRevealProvider />
         <GoogleTranslate />
         <Navbar />
         {children}
+        <ScrollToTop />
         <MobileBottomNav />
         <Footer />
       </body>

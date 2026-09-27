@@ -9,7 +9,7 @@ function ServiceCard({ service }: ServiceCardProps) {
   const Icon = service.icon;
 
   return (
-    <article className="group flex min-h-47.5 flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#b2ebf2] hover:shadow-md">
+    <article className="reveal-on-scroll reveal-fade-up group flex min-h-47.5 flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#b2ebf2] hover:shadow-md">
       <div className="flex items-start justify-between gap-2">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#b2ebf2] bg-[#e0f7fa] text-[#4bb1c8]">
           <Icon size={18} strokeWidth={2} />

@@ -15,7 +15,7 @@ function Page() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   return (
-    <main className="w-full overflow-hidden bg-white">
+    <main className="w-full overflow-x-clip bg-white">
       <HeroSection />
 
       <ServicesSection

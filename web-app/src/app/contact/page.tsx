@@ -5,7 +5,7 @@ import Faqsection from "@/components/Contact/Faqsection";
 import CtsSection from "@/components/Contact/CtsSection";
 function Page() {
   return (
-    <main className="w-full overflow-hidden bg-white">
+    <main className="w-full overflow-x-clip bg-white">
       <HeroSection />
       <ContactmethodsSection />
       <ContactformSection />
