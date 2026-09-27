@@ -46,12 +46,18 @@ body {
 
 .goog-te-gadget {
     height: 0;
-    display: none;
     overflow: hidden !important;
 }
 
 #google_translate_element {
-    display: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 .skiptranslate iframe {
@@ -121,4 +127,100 @@ font[style*="background-color"] {
 body {
   top: 0px !important;
   position: static !important;
+}
+
+/* ============================================================
+   Custom Theme-Matched Scrollbar (HMS Healthcare Palette)
+   ============================================================ */
+
+/* Firefox standard */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4bb1c8 #f4fbfd;
+}
+
+/* WebKit-based browsers (Chrome, Edge, Safari, Opera) */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4fbfd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4bb1c8;
+  border-radius: 9999px;
+  border: 2px solid #f4fbfd;
+  transition: background-color 0.25s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d97b3;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #0f8fa8;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ============================================================
+   Scroll Reveal Animations (Hardware Accelerated, Silky Smooth)
+   ============================================================ */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.reveal-fade-up {
+  transform: translate3d(0, 36px, 0);
+}
+
+.reveal-fade-down {
+  transform: translate3d(0, -36px, 0);
+}
+
+.reveal-fade-left {
+  transform: translate3d(-36px, 0, 0);
+}
+
+.reveal-fade-right {
+  transform: translate3d(36px, 0, 0);
+}
+
+.reveal-zoom-in {
+  transform: scale(0.96);
+}
+
+.reveal-fade {
+  transform: none;
+}
+
+/* Active revealed state */
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* When transition finishes, release will-change to conserve GPU resources */
+.reveal-on-scroll.is-revealed:not(:hover) {
+  will-change: auto;
+}
+
+/* Accessibility: Turn off animations for users preferring reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
 }

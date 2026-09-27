@@ -17,7 +17,7 @@ function MobileBottomNav() {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-sm md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-sm shadow-[0_-2px_10px_rgba(0,0,0,0.08)] md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <ul className="flex items-stretch justify-between px-1">
@@ -31,21 +31,20 @@ function MobileBottomNav() {
             <li key={href} className="flex-1">
               <Link
                 href={href}
-                className="flex flex-col items-center justify-center gap-0.5 py-1.5 text-[9.5px] font-semibold transition-colors"
+                className="flex flex-col items-center justify-center gap-0.5 py-1.5 text-[10.5px] font-bold transition-colors"
               >
                 <span
-                  className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${
-                    isActive
-                      ? "bg-[#e0f7fa] text-[#4bb1c8]"
-                      : "text-gray-400"
-                  }`}
+                  className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors ${isActive
+                      ? "bg-[#4bb1c8] text-white shadow-sm"
+                      : "text-gray-500"
+                    }`}
                 >
-                  <Icon size={15} strokeWidth={isActive ? 2.4 : 2} />
+                  <Icon size={17} strokeWidth={isActive ? 2.8 : 2.4} />
                 </span>
 
                 <span
                   className={
-                    isActive ? "text-[#4bb1c8]" : "text-gray-500"
+                    isActive ? "text-[#4bb1c8] font-extrabold" : "text-gray-600"
                   }
                 >
                   {name}

@@ -2,13 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Plus, ChevronDown, Menu, X } from "lucide-react";
-import { changeGoogleTranslateLanguage } from "@/utils/googleTranslate";
+import { Plus, Menu, X } from "lucide-react";
 import { LanguageSelector } from "./LanguageSelector";
 
 function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [language, setLanguage] = useState("English");
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
@@ -19,12 +17,6 @@ function Navbar() {
     { name: "Timings & Location", href: "/location" },
     { name: "Contact Us", href: "/contact" },
   ];
-
-  const handleLanguageChange = (value: string) => {
-    setLanguage(value);
-    const langCode = value === "Hindi" ? "hi" : "en";
-    changeGoogleTranslateLanguage(langCode);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,52 +45,62 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-30 w-full bg-white transition-shadow duration-300 ${isScrolled
-        ? "border-b border-gray-200 shadow-sm"
-        : "border-b border-transparent shadow-none"
-        }`}
+      className={`sticky top-0 z-30 w-full bg-white transition-shadow duration-300 ${
+        isScrolled
+          ? "border-b border-gray-200 shadow-sm"
+          : "border-b border-transparent shadow-none"
+      }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="flex h-[88px] items-center justify-between">
+        {/* 
+          ===================================================================================================
+          [NAVBAR HEIGHT MODIFICATION COMMENT / NAVBAR ऊंचाई में बदलाव]:
+          Navbar height has been reduced here:
+          - Phone / Mobile (< sm): h-[62px] (Previously h-[88px] — reduced by 26px for a compact, sleek header)
+          - Tablet (sm): sm:h-[68px]
+          - Laptop / Desktop (lg): lg:h-[74px] (Previously h-[88px] — slightly reduced by 14px as requested)
+          ===================================================================================================
+        */}
+        <div className="flex h-[62px] sm:h-[68px] lg:h-[74px] items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 sm:gap-4">
-            <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-[#e0f7fa] ring-1 ring-[#b2ebf2] shadow-sm">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5">
+            <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-[#e0f7fa] ring-1 ring-[#b2ebf2] shadow-sm">
               <Plus
-                size={26}
+                size={22}
                 strokeWidth={5}
                 absoluteStrokeWidth
-                className="h-6.5 w-6.5 text-[#4bb1c8] sm:h-7.5 sm:w-7.5"
+                className="h-5 w-5 text-[#4bb1c8] sm:h-6.5 sm:w-6.5"
               />
             </div>
 
             <div className="leading-tight">
-              <h1 className="text-[20px] font-bold text-[#282828] sm:text-[24px]">
+              <h1 className="text-[18px] font-bold text-[#282828] sm:text-[22px] lg:text-[23px]">
                 HMS
               </h1>
-              <p className="text-[11px] font-medium tracking-wide text-[#282828] sm:text-[12px]">
+              <p className="text-[10px] font-medium tracking-wide text-[#282828] sm:text-[11.5px]">
                 Your Health, Our Priority
               </p>
             </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden items-center gap-10 lg:flex">
+          <div className="hidden items-center gap-8 lg:flex xl:gap-10">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="group relative py-6 text-[14px] font-medium text-[#282828] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#4bb1c8]"
+                className="group relative py-5 text-[14px] font-medium text-[#282828] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-[#4bb1c8]"
               >
                 {link.name}
 
-                <span className="absolute left-1/2 bottom-4.5 h-0.5 w-0 -translate-x-1/2 rounded-full bg-[#4bb1c8] transition-all duration-300 ease-out group-hover:w-full" />
+                <span className="absolute left-1/2 bottom-3.5 h-0.5 w-0 -translate-x-1/2 rounded-full bg-[#4bb1c8] transition-all duration-300 ease-out group-hover:w-full" />
               </Link>
             ))}
           </div>
 
-          {/* Right side: language selector + mobile menu toggle */}
+          {/* Right side: desktop language selector + mobile menu toggle */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <LanguageSelector />
+            <LanguageSelector className="hidden lg:flex" />
 
             {/* Mobile Menu Toggle Button */}
             <button
@@ -107,9 +109,9 @@ function Navbar() {
               aria-label={mobileMenu ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenu}
               aria-controls="mobile-nav-menu"
-              className="flex h-10 w-10 items-center justify-center rounded-xl text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] lg:hidden"
+              className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl text-[#282828] transition-colors hover:bg-[#e0f7fa] hover:text-[#4bb1c8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] lg:hidden"
             >
-              {mobileMenu ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenu ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -134,21 +136,9 @@ function Navbar() {
                 </Link>
               ))}
 
-              {/* Language selector (mobile) */}
-              <div className="relative mt-2 px-4">
-                <select
-                  value={language}
-                  onChange={(e) => handleLanguageChange(e.target.value)}
-                  className="w-full font-medium appearance-none cursor-pointer rounded-xl border border-gray-200 bg-white/90 py-2.5 pl-4 pr-10 text-[14px] text-[#282828] shadow-sm outline-none transition-all hover:border-[#4bb1c8] hover:shadow-md focus:border-[#4bb1c8] focus:ring-2 focus:ring-[#e0f7fa]"
-                >
-                  <option value="English">English</option>
-                  <option value="Hindi">हिंदी</option>
-                </select>
-
-                <ChevronDown
-                  size={14}
-                  className="pointer-events-none absolute right-7 top-1/2 -translate-y-1/2 text-gray-500"
-                />
+              {/* Language selector in mobile drawer */}
+              <div className="mt-3 border-t border-gray-100 pt-3 px-4">
+                <LanguageSelector isMobileDrawer={true} />
               </div>
             </div>
           </div>

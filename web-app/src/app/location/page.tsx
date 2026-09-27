@@ -6,7 +6,7 @@ import FaqSection from "@/components/Timing&Location/FaqSection";
 import CtasSection from "@/components/Timing&Location/CtasSection";
 function Page() {
   return (
-    <main className="w-full overflow-hidden bg-white">
+    <main className="w-full overflow-x-clip bg-white">
       <HeroSection />
       <TimingsSection />
       <LocationSection />
