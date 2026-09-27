@@ -35,7 +35,7 @@ function PatientbenefitsSection() {
                     </ul>
                 </div>
 
-                <div className="rounded-3xl border border-[#b2ebf2] bg-linear-to-br from-[#e0f7fa] via-white to-[#b2ebf2]/50 p-6 shadow-sm sm:p-8">
+                <div className="group relative overflow-hidden rounded-3xl border border-[#b2ebf2] bg-linear-to-br from-[#e0f7fa] via-white to-[#b2ebf2]/50 p-6 shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20 transition-all duration-300 ease-out sm:p-8">
                     <div className="mb-6">
                         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#4bb1c8]">
                             Our Healthcare Promise

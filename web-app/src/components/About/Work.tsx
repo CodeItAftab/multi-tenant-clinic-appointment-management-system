@@ -12,11 +12,11 @@ function Work() {
                 </p>
 
                 <div className="mt-12 grid gap-10 sm:grid-cols-3">
-                    <div>
-                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm">
-                            <Search size={26} className="text-[#4bb1c8]" />
+                    <div className="group relative">
+                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out group-hover:border-[#4bb1c8] group-hover:bg-[#e0f7fa] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20 group-hover:scale-105">
+                            <Search size={26} className="text-[#4bb1c8] transition-transform duration-300 ease-out group-hover:scale-110" />
                         </div>
-                        <h3 className="mt-5 text-[16px] font-bold text-[#282828] sm:text-[18px]">
+                        <h3 className="mt-5 text-[16px] font-bold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[18px]">
                             1. Search &amp; Compare
                         </h3>
                         <p className="mx-auto mt-2.5 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-[14px]">
@@ -25,11 +25,11 @@ function Work() {
                         </p>
                     </div>
 
-                    <div>
-                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm">
-                            <CalendarCheck size={26} className="text-[#4bb1c8]" />
+                    <div className="group relative">
+                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out group-hover:border-[#4bb1c8] group-hover:bg-[#e0f7fa] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20 group-hover:scale-105">
+                            <CalendarCheck size={26} className="text-[#4bb1c8] transition-transform duration-300 ease-out group-hover:scale-110" />
                         </div>
-                        <h3 className="mt-5 text-[16px] font-bold text-[#282828] sm:text-[18px]">
+                        <h3 className="mt-5 text-[16px] font-bold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[18px]">
                             2. Choose Your Slot
                         </h3>
                         <p className="mx-auto mt-2.5 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-[14px]">
@@ -38,11 +38,11 @@ function Work() {
                         </p>
                     </div>
 
-                    <div>
-                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm">
-                            <Clock size={26} className="text-[#4bb1c8]" />
+                    <div className="group relative">
+                        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out group-hover:border-[#4bb1c8] group-hover:bg-[#e0f7fa] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20 group-hover:scale-105">
+                            <Clock size={26} className="text-[#4bb1c8] transition-transform duration-300 ease-out group-hover:scale-110" />
                         </div>
-                        <h3 className="mt-5 text-[16px] font-bold text-[#282828] sm:text-[18px]">
+                        <h3 className="mt-5 text-[16px] font-bold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8] sm:text-[18px]">
                             3. Book &amp; Visit
                         </h3>
                         <p className="mx-auto mt-2.5 max-w-xs text-[13px] leading-relaxed text-gray-500 sm:text-[14px]">

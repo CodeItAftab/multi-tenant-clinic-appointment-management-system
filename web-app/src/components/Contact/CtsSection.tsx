@@ -27,7 +27,7 @@ function CtsSection() {
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="tel:+911234567890"
-              className="inline-flex items-center gap-2 rounded-full bg-[#4bb1c8] px-7 py-3 text-[14px] font-bold text-white shadow-lg shadow-[#4bb1c8]/30 transition-all duration-300 hover:bg-[#33b6d3] hover:shadow-[#4bb1c8]/20"
+              className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-7 py-3 text-[14px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
             >
               <Phone size={16} />
               Call Reception
@@ -35,7 +35,7 @@ function CtsSection() {
 
             <Link
               href="/visit-us"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3 text-[14px] font-bold text-white transition-all duration-300 hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 px-7 py-3 text-[14px] font-bold text-white shadow-xs hover:border-white/40 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
             >
               <MapPin size={16} />
               Timings & Location

@@ -65,15 +65,22 @@ function Choose() {
             {features.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="flex flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
+                className="group relative overflow-hidden flex flex-col items-center rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20"
+                style={{
+                  transition:
+                    "box-shadow 300ms ease-out, border-color 300ms ease-out",
+                }}
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#e0f7fa] ring-1 ring-[#b2ebf2]">
-                  <Icon size={22} className="text-[#4bb1c8]" />
+                {/* Soft glow sweep on hover */}
+                <div className="pointer-events-none absolute -inset-px rounded-2xl bg-linear-to-b from-[#e0f7fa]/0 via-[#e0f7fa]/0 to-[#e0f7fa]/40 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+
+                <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#e0f7fa] ring-1 ring-[#b2ebf2] transition-all duration-300 ease-out group-hover:bg-[#4bb1c8] group-hover:ring-[#4bb1c8] group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20">
+                  <Icon size={22} className="text-[#4bb1c8] transition-colors duration-300 ease-out group-hover:text-white" />
                 </div>
-                <h3 className="mt-4 text-[15px] font-semibold text-[#282828]">
+                <h3 className="relative mt-4 text-[15px] font-semibold text-[#282828] transition-colors duration-300 ease-out group-hover:text-[#0f8fa8]">
                   {title}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-gray-600">
+                <p className="relative mt-2 text-[13px] leading-relaxed text-gray-600">
                   {desc}
                 </p>
               </div>

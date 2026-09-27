@@ -206,7 +206,7 @@ function ContactformSection() {
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#4bb1c8] px-6 py-2.5 text-[13px] font-bold text-white shadow-sm transition-all duration-300 hover:bg-[#33b6d3] sm:w-auto"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] px-6 py-2.5 text-[13px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer sm:w-auto"
                 >
                   <Send size={15} />
                   Send Message

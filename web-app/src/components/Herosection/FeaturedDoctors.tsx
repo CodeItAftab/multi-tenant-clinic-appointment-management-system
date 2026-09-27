@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Stethoscope, GraduationCap, Star, Calendar, ArrowRight, X } from "lucide-react";
+import { Stethoscope, GraduationCap, Star, Calendar, ArrowRight } from "lucide-react";
 import { doctors, Doctor } from "@/utils/doctorsData";
 import DoctorDetailsModal from "../Doctors/DoctorDetailsModal";
-import Booking from "../Forms/Booking";
+import BookingModal from "../Forms/BookingModal";
 
 function FeaturedDoctors() {
     const featuredDoctors = doctors.slice(0, 4);
@@ -42,22 +42,29 @@ function FeaturedDoctors() {
                 {featuredDoctors.map((doctor) => (
                     <div
                         key={doctor.id}
-                        className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-[0_12px_40px_rgb(0,0,0,0.1)] hover:-translate-y-1"
+                        className="doctor-card group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:border-[#4bb1c8] hover:shadow-lg hover:shadow-[#4bb1c8]/20"
+                        style={{
+                            transition:
+                                "box-shadow 300ms ease-out, border-color 300ms ease-out",
+                        }}
                     >
+                        {/* Soft glow sweep on hover */}
+                        <div className="pointer-events-none absolute -inset-px rounded-2xl bg-linear-to-b from-[#e0f7fa]/0 via-[#e0f7fa]/0 to-[#e0f7fa]/40 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+
                         <div className="relative p-5">
                             <div className="flex items-start gap-3.5">
                                 <div className="shrink-0">
-                                    <div className="h-18 w-18 overflow-hidden rounded-full ring-2 ring-[#e0f7fa] ring-offset-2 shadow-md">
+                                    <div className="h-18 w-18 overflow-hidden rounded-full ring-2 ring-[#e0f7fa] ring-offset-2 shadow-md transition-all duration-300 ease-out group-hover:ring-[#4bb1c8]/60 group-hover:shadow-md">
                                         <img
                                             src={doctor.image}
                                             alt={doctor.name}
-                                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                                            className="h-full w-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-110"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="min-w-0 flex-1 pt-1">
-                                    <h3 className="truncate text-sm font-bold text-slate-900">
+                                    <h3 className="truncate text-sm font-bold text-slate-900 transition-colors duration-300 ease-out group-hover:text-[#0f8fa8]">
                                         {doctor.name}
                                     </h3>
                                     <p className="truncate text-[11px] font-bold text-[#4bb1c8]">
@@ -68,7 +75,7 @@ function FeaturedDoctors() {
 
                             <div className="mt-4 flex flex-col items-center text-center">
                                 {/* Rating Badge */}
-                                <div className="flex items-center gap-1.5 rounded-lg bg-[#e0f7fa] px-2.5 py-1.5 shadow-sm">
+                                <div className="flex items-center gap-1.5 rounded-lg bg-[#e0f7fa] px-2.5 py-1.5 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-0.5 group-hover:shadow-md group-hover:shadow-[#4bb1c8]/20">
                                     <Star size={13} className="fill-[#4bb1c8] text-[#4bb1c8]" />
                                     <span className="text-[12px] font-bold text-[#0f8fa8]">
                                         {doctor.rating}
@@ -97,7 +104,7 @@ function FeaturedDoctors() {
                                     <button
                                         type="button"
                                         onClick={() => setBookingDoctor(doctor)}
-                                        className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] py-2.5 text-[12px] font-bold text-white shadow-md shadow-[#e0f7fa] transition-all hover:bg-[#33b6d3] hover:shadow-lg hover:shadow-[#b2ebf2] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
+                                        className="group inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] py-2.5 text-[12px] font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
                                     >
                                         <Calendar size={13} className="transition-transform group-hover:rotate-[-10deg]" />
                                         Book Appointment
@@ -106,7 +113,7 @@ function FeaturedDoctors() {
                                     <button
                                         type="button"
                                         onClick={() => setActiveDoctor(doctor)}
-                                        className="flex justify-center rounded-xl border border-slate-200 py-2.5 text-[12px] font-bold text-slate-700 transition-all hover:border-[#b2ebf2] hover:bg-[#e0f7fa]/40 hover:text-[#4bb1c8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
+                                        className="flex justify-center items-center rounded-xl border border-slate-200 bg-white py-2.5 text-[12px] font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
                                     >
                                         View Details
                                     </button>
@@ -121,7 +128,7 @@ function FeaturedDoctors() {
             <div className="mt-12 flex justify-center">
                 <Link
                     href="/doctors"
-                    className="group inline-flex items-center gap-2 rounded-2xl bg-linear-to-r from-[#4bb1c8] to-[#1aa3bf] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#e0f7fa]/60 transition-all hover:shadow-xl hover:shadow-[#b2ebf2]/60 hover:scale-[1.02]"
+                    className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer"
                 >
                     View All Doctors
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -133,32 +140,19 @@ function FeaturedDoctors() {
                 <DoctorDetailsModal
                     doctor={activeDoctor}
                     onClose={() => setActiveDoctor(null)}
+                    onBookAppointment={(doc) => {
+                        setActiveDoctor(null);
+                        setBookingDoctor(doc);
+                    }}
                 />
             )}
 
             {/* Booking Modal — rendered once, outside the grid loop, tied to the clicked doctor */}
-            {bookingDoctor && (
-                <div
-                    className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/50 backdrop-blur-sm"
-                    onClick={(e) => {
-                        if (e.target === e.currentTarget) setBookingDoctor(null);
-                    }}
-                >
-                    <div className="flex min-h-full items-start justify-center px-4 py-8 sm:py-12">
-                        <div className="relative w-full max-w-3xl">
-                            <button
-                                onClick={() => setBookingDoctor(null)}
-                                aria-label="Close booking form"
-                                className="absolute -top-3 -right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white border border-slate-200 shadow-lg text-neutral-500 hover:text-neutral-900 hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8]"
-                            >
-                                <X className="h-4 w-4" strokeWidth={2.5} />
-                            </button>
-                            {/* Pass the selected doctor through if Booking accepts it */}
-                            <Booking />
-                        </div>
-                    </div>
-                </div>
-            )}
+            <BookingModal
+                isOpen={Boolean(bookingDoctor)}
+                onClose={() => setBookingDoctor(null)}
+                preselectedDoctor={bookingDoctor}
+            />
         </section>
     );
 }

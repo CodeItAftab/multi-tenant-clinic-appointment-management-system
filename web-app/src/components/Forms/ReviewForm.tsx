@@ -76,7 +76,7 @@ function ReviewForm({ doctorName, onClose, onSubmit }: ReviewFormProps) {
                 <button
                     type="button"
                     onClick={onClose}
-                    className="mt-6 w-full rounded-xl bg-[#4bb1c8] py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#33b6d3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
+                    className="mt-6 w-full rounded-xl border border-slate-200 bg-white py-2.5 text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none"
                 >
                     Close
                 </button>
@@ -197,14 +197,14 @@ function ReviewForm({ doctorName, onClose, onSubmit }: ReviewFormProps) {
                     <button
                         type="button"
                         onClick={onClose}
-                        className="flex-1 rounded-xl border border-slate-200 py-2.5 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
+                        className="flex-1 rounded-xl border border-slate-200 bg-white py-2.5 text-sm font-bold text-slate-700 shadow-xs hover:border-[#4bb1c8] hover:bg-[#e0f7fa]/30 hover:text-[#0f8fa8] hover:shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer focus:outline-none"
                     >
                         Cancel
                     </button>
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#4bb1c8] py-2.5 text-sm font-bold text-white shadow-md shadow-[#e0f7fa] transition-all hover:bg-[#33b6d3] hover:shadow-lg hover:shadow-[#b2ebf2] disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4bb1c8] focus-visible:ring-offset-2"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#0f8fa8] via-[#33b6d3] to-[#4bb1c8] hover:from-[#0d7d93] hover:to-[#389cb3] py-2.5 text-sm font-extrabold text-white shadow-lg shadow-[#4bb1c8]/25 hover:shadow-xl hover:shadow-[#4bb1c8]/35 hover:scale-[1.02] active:scale-98 transition-all duration-300 ease-out cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 focus:outline-none"
                     >
                         {submitting ? (
                             <>
